@@ -30,7 +30,7 @@ Link to the video demonstration of testing is _TBA_.
 | API method                                                 | Test method           | Input partitions |
 | ---------------------------------------------------------- | --------------------- | ---------------- |
 | `Range.shift(Range, double, boolean)`                      | `RangeTest.*`         |                  |
-| `Range.constrain(double)`                                  | `RangeTest.*`         |                  |
+| `Range.isNaNRange()`                                       | `RangeTest.*`         |                  |
 | `Range.expandToInclude(Range, double)`                     | `RangeTest.*`         |                  |
 | `Range.combineIgnoringNaN(Range, Range)`                   | `RangeTest.*`         |                  |
 | `Range.intersects(double, double)`                         | `RangeTest.*`         |                  |
@@ -53,7 +53,7 @@ Each of the four tester will complete at least 1 unit testing of the `Range` cla
 | API method                                                 | Tester                   |
 | ---------------------------------------------------------- | ------------------------ |
 | `Range.shift(Range, double, boolean)`                      | Okeoghenemarho Obuareghe |
-| `Range.constrain(double)`                                  | Bhavyai Gupta            |
+| `Range.isNaNRange()`                                       | Bhavyai Gupta            |
 | `Range.expandToInclude(Range, double)`                     | Drew Burritt             |
 | `Range.combineIgnoringNaN(Range, Range)`                   | Bhavyai Gupta            |
 | `Range.intersects(double, double)`                         | Michael                  |
