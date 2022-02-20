@@ -21,8 +21,9 @@ public class DataUtilitiesTest_calculateColumnTotal {
 
     }
 	
+	
 	@Test
-	public void calculateColumnTotalWith15And0() {
+	public void calculateColumnTotalAllRowsFirstColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -43,27 +44,48 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	}
 	
 	@Test
-	public void calculateColumnTotalWith0And0() {
+	public void calculateColumnTotalAllRowsMiddleColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
 	            one(values).getRowCount();
 	            will(returnValue(3));
-	            one(values).getValue(0, 0);
+	            one(values).getValue(0, 1);
 	            will(returnValue(7.5));
-	            one(values).getValue(1, 0);
+	            one(values).getValue(1, 1);
 	            will(returnValue(2.5));
-	            one(values).getValue(2, 0);
-	            will(returnValue(-10));
+	            one(values).getValue(2, 1);
+	            will(returnValue(5.0));
 	        }
 	    });
 		
-		double result = DataUtilities.calculateColumnTotal(values, 0);
-		assertEquals(result, 0, .000000001d);
+		double result = DataUtilities.calculateColumnTotal(values, 1);
+		assertEquals(result, 15, .000000001d);
 	    
 	}
 	
-public void calculateColumnTotalWithMaxValueAnd0() {
+	@Test
+	public void calculateColumnTotalAllRowsLastColumn() {
+		
+		mockingContext.checking(new Expectations() {
+	        {
+	            one(values).getRowCount();
+	            will(returnValue(3));
+	            one(values).getValue(0, 2);
+	            will(returnValue(7.5));
+	            one(values).getValue(1, 2);
+	            will(returnValue(2.5));
+	            one(values).getValue(2, 2);
+	            will(returnValue(5.0));
+	        }
+	    });
+		
+		double result = DataUtilities.calculateColumnTotal(values, 2);
+		assertEquals(result, 15.0, .000000001d);
+	    
+	}
+	@Test	
+	public void calculateColumnTotalWithMaxValueAndFirstColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -82,8 +104,8 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 		assertEquals(result, Double.MAX_VALUE, .000000001d);
 	    
 	}
-
-	public void calculateColumnTotalWithmINValueAnd0() {
+	@Test
+	public void calculateColumnTotalWithMinValueAndFirstColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -104,7 +126,7 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 	}
 	
 	@Test
-	public void calculateColumnTotalWith15AndMaxValue() {
+	public void calculateColumnTotalWith15AndMaxValueColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -125,7 +147,7 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 	}
 	
 	@Test
-	public void calculateColumnTotalWith15AndMinValue() {
+	public void calculateColumnTotalWith15AndMinValueColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -144,6 +166,8 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 		assertEquals(result, 15.0, .000000001d);
 	    
 	}
+	
+	
 	
 	
 	
