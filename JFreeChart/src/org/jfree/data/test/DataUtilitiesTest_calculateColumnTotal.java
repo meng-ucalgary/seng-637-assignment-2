@@ -126,7 +126,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	}
 	
 	@Test
-	public void calculateColumnTotalWith15AndMaxValueColumn() {
+	public void calculateColumnTotalWithMaxValueColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -147,7 +147,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	}
 	
 	@Test
-	public void calculateColumnTotalWith15AndMinValueColumn() {
+	public void calculateColumnTotalWithMinValueColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -167,7 +167,25 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    
 	}
 	
-	
+	@Test
+	public void calculateColumnTotalWithSumOf0AndFirstColumn() {
+		
+		mockingContext.checking(new Expectations() {
+	        {
+	            one(values).getRowCount();
+	            will(returnValue(3));
+	            one(values).getValue(0, 0);
+	            will(returnValue(7.5));
+	            one(values).getValue(1, 0);
+	            will(returnValue(2.5));
+	            one(values).getValue(2, 0);
+	            will(returnValue(-10));
+	        }
+	    });
+		double result = DataUtilities.calculateColumnTotal(values, 0);
+		assertEquals(result, 0, .000000001d);
+	    
+	}
 	
 	
 	

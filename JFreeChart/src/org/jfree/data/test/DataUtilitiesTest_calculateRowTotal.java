@@ -21,8 +21,9 @@ public class DataUtilitiesTest_calculateRowTotal {
 
     }
 	
+	
 	@Test
-	public void calculateColumnTotalWith15And0() {
+	public void calculateRowTotalFirstRow() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -40,10 +41,55 @@ public class DataUtilitiesTest_calculateRowTotal {
 		double result = DataUtilities.calculateRowTotal(values, 0);
 		assertEquals(result, 15.0, .000000001d);
 	    
+	    
 	}
 	
 	@Test
-	public void calculateColumnTotalWith0And0() {
+	public void calculateRowTotalMiddleRow() {
+		
+		mockingContext.checking(new Expectations() {
+	        {
+	            one(values).getColumnCount();
+	            will(returnValue(3));
+	            one(values).getValue(1, 0);
+	            will(returnValue(7.5));
+	            one(values).getValue(1, 1);
+	            will(returnValue(2.5));
+	            one(values).getValue(1, 2);
+	            will(returnValue(5.0));
+	        }
+	    });
+		
+		double result = DataUtilities.calculateRowTotal(values, 1);
+		assertEquals(result, 15.0, .000000001d);
+	    
+	    
+	}
+	
+	@Test
+	public void calculateRowTotalLastRow() {
+		
+		mockingContext.checking(new Expectations() {
+	        {
+	            one(values).getColumnCount();
+	            will(returnValue(3));
+	            one(values).getValue(2, 0);
+	            will(returnValue(7.5));
+	            one(values).getValue(2, 1);
+	            will(returnValue(2.5));
+	            one(values).getValue(2, 2);
+	            will(returnValue(5.0));
+	        }
+	    });
+		
+		double result = DataUtilities.calculateRowTotal(values, 2);
+		assertEquals(result, 15.0, .000000001d);
+	    
+	    
+	}
+	
+	@Test
+	public void calculateRowTotalWithSumOf0AndFirstColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -57,13 +103,12 @@ public class DataUtilitiesTest_calculateRowTotal {
 	            will(returnValue(-10));
 	        }
 	    });
-		
 		double result = DataUtilities.calculateRowTotal(values, 0);
 		assertEquals(result, 0, .000000001d);
 	    
 	}
 	
-public void calculateColumnTotalWithMaxValueAnd0() {
+	public void calculateColumnTotalWithMaxValueAndFirstColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -83,7 +128,7 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 	    
 	}
 
-	public void calculateColumnTotalWithmINValueAnd0() {
+	public void calculateColumnTotalWithmINValueAndFirstColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -104,7 +149,7 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 	}
 	
 	@Test
-	public void calculateColumnTotalWith15AndMaxValue() {
+	public void calculateRowTotalWithMaxValueColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -125,7 +170,7 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 	}
 	
 	@Test
-	public void calculateColumnTotalWith15AndMinValue() {
+	public void calculateRowTotalWithMinValueColumn() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -144,6 +189,51 @@ public void calculateColumnTotalWithMaxValueAnd0() {
 		assertEquals(result, 15.0, .000000001d);
 	    
 	}
+	
+	@Test
+	public void calculateRowTotalWithMaxValueAndFirstRow() {
+		
+		mockingContext.checking(new Expectations() {
+	        {
+	            one(values).getColumnCount();
+	            will(returnValue(3));
+	            one(values).getValue(0, 0);
+	            will(returnValue(Double.MAX_VALUE));
+	            one(values).getValue(0, 1);
+	            will(returnValue(2.5));
+	            one(values).getValue(0, 2);
+	            will(returnValue(-2.5));
+	        }
+	    });
+		
+		double result = DataUtilities.calculateRowTotal(values, 0);
+		assertEquals(result, Double.MAX_VALUE, .000000001d);
+	    
+	    
+	}
+	
+	@Test
+	public void calculateRowTotalWithInValueAndFirstRow() {
+		
+		mockingContext.checking(new Expectations() {
+	        {
+	            one(values).getColumnCount();
+	            will(returnValue(3));
+	            one(values).getValue(0, 0);
+	            will(returnValue(Double.MIN_VALUE));
+	            one(values).getValue(0, 1);
+	            will(returnValue(2.5));
+	            one(values).getValue(0, 2);
+	            will(returnValue(-2.5));
+	        }
+	    });
+		
+		double result = DataUtilities.calculateRowTotal(values, 0);
+		assertEquals(result, Double.MIN_VALUE, .000000001d);
+	    
+	    
+	}
+	
 	
 	
 	
