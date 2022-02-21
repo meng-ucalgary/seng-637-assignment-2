@@ -108,27 +108,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	    
 	}
 	
-	public void calculateRowTotalWithMaxValueAndFirstColumn() {
-		
-		mockingContext.checking(new Expectations() {
-	        {
-	            one(values).getColumnCount();
-	            will(returnValue(3));
-	            one(values).getValue(0, 0);
-	            will(returnValue(Double.MAX_VALUE));
-	            one(values).getValue(0, 1);
-	            will(returnValue(2.5));
-	            one(values).getValue(0, 2);
-	            will(returnValue(-2.5));
-	        }
-	    });
-		
-		double result = DataUtilities.calculateRowTotal(values, 0);
-		assertEquals(Double.MAX_VALUE,result,  .000000001d);
-	    
-	}
-
-	public void calculateRowTotalWithmINValueAndFirstColumn() {
+	public void calculateRowTotalWithMinValueAndFirstRow() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -212,27 +192,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	    
 	}
 	
-	@Test
-	public void calculateRowTotalWithInValueAndFirstRow() {
-		
-		mockingContext.checking(new Expectations() {
-	        {
-	            one(values).getColumnCount();
-	            will(returnValue(3));
-	            one(values).getValue(0, 0);
-	            will(returnValue(Double.MIN_VALUE));
-	            one(values).getValue(0, 1);
-	            will(returnValue(2.5));
-	            one(values).getValue(0, 2);
-	            will(returnValue(-2.5));
-	        }
-	    });
-		
-		double result = DataUtilities.calculateRowTotal(values, 0);
-		assertEquals(Double.MIN_VALUE, result, .000000001d);
-	    
-	    
-	}
+	
 	
 	
 	
