@@ -56,23 +56,14 @@ The scope should be individually discussed between the two classes.
 For the range class, the range of -10 to 10 is used and testing of its methods will use input partitions that abides to the following BVT Test RANGE (Lower - Upper): 
 
 1 BLB - LB
-
 1 BLB - 1 ALB
-
 1 BLB - 1 AUB
-
 LB - 1 ALB
-
 LB - UB
-
 NOM - NOM
-
 1 BUB - UB
-
 UB - 1 AUB
-
 1 BLB - 1 AUB
-
 
 [insert the boundary graph]
 
@@ -113,7 +104,14 @@ For the Values2D object, the input partition is a 3x3 matrix with which double v
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueColumn` | [7.5,2.5,5.0], Double.MIN_VALUE                  |
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithSumOf0AndFirstColumn` | [7.5,2.5,-10], 0                  |
 | `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.*` |                  |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.*` |                  |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalFirstRow` | [7.5,2.5,5.0], 0  |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalLastRow` | [7.5,2.5,5.0], 2  |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalMiddleRow` | [7.5,2.5,5.0], 1 |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMaxValueAndFirstRow` |[Double.MAX_VALUE,2.5,-2.5], 0       |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMaxValueRow()` | [7.5,2.5,5.0], Double.MAX_VALUE                 |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMinValueAndFirstRow` |[Double.MIN_VALUE,2.5,-2.5], 0                   |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMinValueRow` | [7.5,2.5,5.0], Double.MIN_VALUE                 |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithSumOf0AndFirstRow` |  [7.5,2.5,-10], 0                 |
 | `DataUtilities.calculateRowTotal(Values2D, int, int[])`    | `DataUtilitiesTest.*` |                  |
 | `DataUtilities.getCumulativePercentages(KeyedValues)`      | `DataUtilitiesTest.*` |                  |
 
