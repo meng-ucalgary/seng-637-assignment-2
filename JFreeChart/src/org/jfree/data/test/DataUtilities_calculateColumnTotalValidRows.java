@@ -36,7 +36,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0, new int[] {0,1,2});
-		assertEquals(result, 15.0, .000000001d);
+		assertEquals(15.0, result,  .000000001d);
 	    
 	}
 	@Test
@@ -56,7 +56,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 1, new int[] {0,1,2});
-		assertEquals(result, 15.0, .000000001d);
+		assertEquals(15.0, result,  .000000001d);
 	    
 	}
 	
@@ -77,7 +77,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 2, new int[] {0,1,2});
-		assertEquals(result, 15.0, .000000001d);
+		assertEquals(15.0, result,  .000000001d);
 	    
 	}
 	//one row valid, first column
@@ -99,7 +99,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0, new int[] {0});
-		assertEquals(result, 7.5, .000000001d);
+		assertEquals(7.5, result,  .000000001d);
 	    
 	}
 	@Test
@@ -140,7 +140,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0, new int[] {2});
-		assertEquals(result, 5.0, .000000001d);
+		assertEquals(5.0, result,  .000000001d);
 	    
 	}
 	//one row valid, middle column
@@ -161,7 +161,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 1, new int[] {0});
-		assertEquals(result, 7.5, .000000001d);
+		assertEquals(7.5, result,  .000000001d);
 	    
 	}
 	@Test
@@ -181,7 +181,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 1, new int[] {1});
-		assertEquals(result, 2.5, .000000001d);
+		assertEquals(2.5, result,  .000000001d);
 	    
 	}
 	@Test
@@ -201,7 +201,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0, new int[] {2});
-		assertEquals(result, 5.0, .000000001d);
+		assertEquals(5.0, result,  .000000001d);
 	    
 	}
 	//one row valid, last column
@@ -222,7 +222,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 		});
 
 		double result = DataUtilities.calculateColumnTotal(values, 2, new int[] {0});
-		assertEquals(result, 7.5, .000000001d);
+		assertEquals(7.5, result,  .000000001d);
 	    
 	}
 	@Test
@@ -242,7 +242,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 2, new int[] {1});
-		assertEquals(result, 2.5, .000000001d);
+		assertEquals(2.5, result,  .000000001d);
 	    
 	}
 	@Test
@@ -262,7 +262,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 2, new int[] {2});
-		assertEquals(result, 5.0, .000000001d);
+		assertEquals( 5.0, result, .000000001d);
 	    
 	}	
 	//Two rows valid
@@ -283,7 +283,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0, new int[] {0,2});
-		assertEquals(result, 12.5, .000000001d);
+		assertEquals(12.5,result,  .000000001d);
 	    
 	}
 	//Two rows valid
@@ -304,29 +304,57 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 		    });
 			
 			double result = DataUtilities.calculateColumnTotal(values, 2, new int[] {1,2});
-			assertEquals(result, 8.5, .000000001d);
+			assertEquals( 8.5, result, .000000001d);
 		    
 		}
 		//Invalid rows
-		@Test
-		public void calculateColumnTotalInvalidRowFirstColumn() {
-			
-			mockingContext.checking(new Expectations() {
-		        {
-		            one(values).getRowCount();
-		            will(returnValue(3));
-		            one(values).getValue(0, 2);
-		            will(returnValue(7.5));
-		            one(values).getValue(1, 2);
-		            will(returnValue(3.5));
-		            one(values).getValue(2, 2);
-		            will(returnValue(5.0));
-		        }
-		    });
-			
-			double result = DataUtilities.calculateColumnTotal(values, 2, new int[] {3});
-			assertEquals(result, 0, .000000001d);
-		    
-		}
-	
+		
+		//Invalid rows
+				@Test
+				public void calculateColumnTotalInvalidRowAUBMiddleColumn() {
+					
+					mockingContext.checking(new Expectations() {
+				        {
+				            one(values).getRowCount();
+				            will(returnValue(3));
+				            one(values).getValue(1, 2);
+				            will(returnValue(7.5));
+				           
+				        }
+				    });
+					
+					double result = DataUtilities.calculateColumnTotal(values, 2, new int[] {1,5});
+					assertEquals(7.5, result, .000000001d);
+				    
+				}
+				@Test
+				public void calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn() {
+					
+					mockingContext.checking(new Expectations() {
+				        {
+				            one(values).getRowCount();
+				            will(returnValue(3));
+				           
+				        }
+				    });
+					
+					double result = DataUtilities.calculateColumnTotal(values, 1, new int[] {5});
+					assertEquals( 0,result, .000000001d);
+				    
+				}
+				@Test
+				public void calculateColumnTotalInvalidRowBLBFirstColumn() {
+					
+					mockingContext.checking(new Expectations() {
+				        {
+				            one(values).getRowCount();
+				            will(returnValue(3));
+            
+				        }
+				    });
+					
+					double result = DataUtilities.calculateColumnTotal(values, 0, new int[] {-1});
+					assertEquals(0, result, .000000001d);
+				    
+				}
 }
