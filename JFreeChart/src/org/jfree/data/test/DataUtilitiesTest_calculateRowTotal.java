@@ -89,7 +89,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	}
 	
 	@Test
-	public void calculateRowTotalWithSumOf0AndFirstColumn() {
+	public void calculateRowTotalWithSumOf0AndFirstRow() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -129,7 +129,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	}
 	
 	@Test
-	public void calculateRowTotalWithMaxValueColumn() {
+	public void calculateRowTotalWithMaxValueRow() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
@@ -150,7 +150,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	}
 	
 	@Test
-	public void calculateRowTotalWithMinValueColumn() {
+	public void calculateRowTotalWithMinValueRow() {
 		
 		mockingContext.checking(new Expectations() {
 	        {
