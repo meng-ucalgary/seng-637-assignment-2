@@ -39,7 +39,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0);
-		assertEquals(result, 15.0, .000000001d);
+		assertEquals(15.0, result, .000000001d);
 	    
 	}
 	
@@ -60,7 +60,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 1);
-		assertEquals(result, 15, .000000001d);
+		assertEquals(15, result, .000000001d);
 	    
 	}
 	
@@ -81,7 +81,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 2);
-		assertEquals(result, 15.0, .000000001d);
+		assertEquals(15.0,result,  .000000001d);
 	    
 	}
 	@Test	
@@ -101,7 +101,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0);
-		assertEquals(result, Double.MAX_VALUE, .000000001d);
+		assertEquals(Double.MAX_VALUE, result, .000000001d);
 	    
 	}
 	@Test
@@ -121,7 +121,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0);
-		assertEquals(result, Double.MIN_VALUE, .000000001d);
+		assertEquals(Double.MIN_VALUE, result, .000000001d);
 	    
 	}
 	
@@ -142,7 +142,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, Integer.MAX_VALUE);
-		assertEquals(result, 15.0, .000000001d);
+		assertEquals(15.0, result, .000000001d);
 	    
 	}
 	
@@ -163,7 +163,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, Integer.MIN_VALUE);
-		assertEquals(result, 15.0, .000000001d);
+		assertEquals(15.0, result, .000000001d);
 	    
 	}
 	
@@ -183,7 +183,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	        }
 	    });
 		double result = DataUtilities.calculateColumnTotal(values, 0);
-		assertEquals(result, 0, .000000001d);
+		assertEquals(0, result, .000000001d);
 	    
 	}
 	
