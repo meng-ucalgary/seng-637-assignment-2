@@ -140,7 +140,7 @@ you have explained in the test strategy section //above
 
 ## Division of team work
 
-Each of the four tester will complete at least 1 unit testing of the `Range` class and 1 mock testing from the `DataUtilities` class. Group peer review will be done after the individual testings to ensure that the quality of work abides to the scope of the test plan. Below table summarizes the distribution of development of test cases.
+Each of the four tester will complete at least 1 unit testing of the `Range` class and 1 unit testing using `jMock` from the `DataUtilities` class. Group peer review will be done after the individual testings to ensure that the quality of work abides to the scope of the test plan. Below table summarizes the distribution of development of test cases.
 
 | API method                                                 | Tester                   |
 | ---------------------------------------------------------- | ------------------------ |
@@ -165,9 +165,17 @@ Each of the four tester will complete at least 1 unit testing of the `Range` cla
 
    The lesson learned from this was to not rely solely on what's given. We should visit the official website or mvncentral of the library that we are using to make sure all its dependencies are included too.
 
+4. Mocking is a great way to mock objects. However, often times we have to guess the functionality of the object being mocked according to the given API specification. The specification may not give us true picture of what the code is doing. One of the highlight is the `DataUtilities.getCumulativePercentages` method, where API mentions "The percentages are values between 0.0 and 1.0". However, the actual cumulative percentages given as output from the method can be negative depending upon the input parameter `data`; this matches our manual calculations. This mismatch between the API and the actual working of the method can create doubts in the minds of tester whether they mocked the method correctly or not.
+
 ## Comments and feedback
 
-We believe that the assignment has given us a great opportunity in learning how to effectively design unit tests that also involves mocking certain classes. It is very fun in figuring ways how to mock one of the input classes as we need to guess at each step in anticipating what the targeted method expects from these input objects.
+1. This assignment has given us a great opportunity in learning how to effectively design unit tests, and mocking interfaces whose implemented classes might not be available.
+
+2. Testing was automated by `JUnit`, which a very popular testing framework used widely in the industry.
+
+3. Figuring ways how to mock one of the input objects is very intriguing as we need to anticipate what the targeted method expects from those inputs.
+
+4. The assignment description document [`Assignment2.md`](Assignment2.md) is very detailed and comprehensive, and it was easy to follow.
 
 ## Contributors
 
