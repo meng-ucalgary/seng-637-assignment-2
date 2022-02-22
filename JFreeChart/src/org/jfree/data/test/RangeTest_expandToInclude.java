@@ -43,10 +43,11 @@ public class RangeTest_expandToInclude {
     }
 	@Test
     public void expandToIncludeWithInputDoubleMax() {
-        assertEquals("Testing epanding range to include value AUB ", new Range(-10, Double.MAX_VALUE), Range.expandToInclude(testRange, Double.MAX_VALUE));       
+        assertEquals("Testing epanding range to include max double", new Range(-10, Double.MAX_VALUE), Range.expandToInclude(testRange, Double.MAX_VALUE));       
     }
 	@Test
     public void expandToIncludeWithInputNegativeDoubleMax() {
-        assertEquals("Testing epanding range to include value AUB ", new Range(-Double.MAX_VALUE, 10), Range.expandToInclude(testRange, -Double.MAX_VALUE));       
+        assertEquals("Testing epanding range to include negative max double", new Range(-Double.MAX_VALUE, 10), Range.expandToInclude(testRange, -Double.MAX_VALUE));       
     }
+	
 }
