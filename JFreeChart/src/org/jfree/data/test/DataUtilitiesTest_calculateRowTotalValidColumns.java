@@ -305,7 +305,7 @@ public class DataUtilitiesTest_calculateRowTotalValidColumns {
             }
         });
 
-        double result = DataUtilities.calculateRowTotal(values, 1, new int[] { 5 });
+        double result = DataUtilities.calculateRowTotal(values, 1, new int[] { 3 });
         assertEquals(0.0, result, .000000001d);
     }
 
@@ -324,7 +324,7 @@ public class DataUtilitiesTest_calculateRowTotalValidColumns {
             }
         });
 
-        double result = DataUtilities.calculateRowTotal(values, 2, new int[] { 2, 5 });
+        double result = DataUtilities.calculateRowTotal(values, 2, new int[] { 2, 3 });
         assertEquals(5.23, result, .000000001d);
     }
 
