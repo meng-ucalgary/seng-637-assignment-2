@@ -81,7 +81,14 @@ For the Values2D object, the input partition is a 3x3 matrix with which double v
 | ---------------------------------------------------------- | --------------------- | ---------------- |
 | `Range.shift(Range, double, boolean)`                      | `RangeTest.*`         |                  |
 | `Range.isNaNRange()`                                       | `RangeTest.*`         |                  |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.*`         |                  |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputBLB`         |     (-10,10),   -11           |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputLB`         |       (-10,10), -10           |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputALB`         |     (-10,10),     -9         |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputBUB`         |  (-10,10),    9            |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputUB`         |  (-10,10),  10                |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputAUB`         |  (-10,-10)    11            |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputDoubleMax`         |  (-10,10), Double.MAX_VALUE             |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputNegativeDoubleMax`         |  (-10,10), -Double.MAX_VALUE               |
 | `Range.combineIgnoringNaN(Range, Range)`                   | `RangeTest.*`         |                  |
 | `Range.intersects(double, double)`                         | `RangeTest.intersectWithInput0And0`         |  (0,0)                |
 | `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndALB`         |  (-15,-8)                |
@@ -103,7 +110,24 @@ For the Values2D object, the input partition is a 3x3 matrix with which double v
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueAndFirstColumn` | [Double.MIN_VALUE,2.5,-2.5], 0                 |
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueColumn` | [7.5,2.5,5.0], Double.MIN_VALUE                  |
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithSumOf0AndFirstColumn` | [7.5,2.5,-10], 0                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.*` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidFirstColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidMiddleColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidLastColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidFirstColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidFirstColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidFirstColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidMiddleColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidMiddleColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidLastColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidLastColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidLastColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstAndLastRowValidFirstColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleAndLastRowValidLastColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBMiddleColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMaxRowsMaxColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalBelowMaxRowsBelowMaxColumn` |                  |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalWithMaxValue` |                  |
 | `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalFirstRow` | [7.5,2.5,5.0], 0  |
 | `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalLastRow` | [7.5,2.5,5.0], 2  |
 | `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalMiddleRow` | [7.5,2.5,5.0], 1 |
