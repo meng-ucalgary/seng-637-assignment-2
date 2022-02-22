@@ -15,13 +15,11 @@
 
 ## Introduction
 
-The objective of this assignment is to test two classes; namely org.jfree.data.Range (or the Range Class) and org.jfree.data.DataUtilities (or the Data Utilities Class).
+The objective of this assignment is to test five methods each of two classes - `org.jfree.data.Range` and `org.jfree.data.DataUtilities`.
 
-The Range class is best described as representing an immutable range of values. For the range class, functions can be static methods or instance methods that performed on a range.
+The `Range` class is best described as representing an immutable range of values. For the `Range` class, functions can be static methods or instance methods that performed on a range.
 
-Data Utilities, on the other hand, provides a set of utility methods to be used in different data classes, with the exception of datasets. The methods from which DataUtilites class will be tested on will involve parameters from two interfaces; Values2D and KeyedValues. Values2D is a general interface for accessing a table of values whereas KeyedValues is an interface assisting the storage of an ordered list of key-value pairs.
-
-The test plan as well as details to our unit test strategy can be found in the “Detailed description of unit test strategy” section.
+`DataUtilities`, on the other hand, provides a set of utility methods to be used in different data classes, with the exception of datasets. The methods from which `DataUtilities` class will be tested on involves parameter from two interfaces; `Values2D` and `KeyedValues`. `Values2D` is a general purpose interface for accessing a table of values whereas `KeyedValues` is an interface assisting the storage of an ordered list of key-value pairs.
 
 ## Video demo
 
@@ -29,31 +27,19 @@ Link to the video demonstration of testing is _TBA_.
 
 ## Detailed description of unit test strategy
 
-The test plan for Range and DataUtilities will be defined differently due to the differences of the two classes' functionality.
+The test plan for `Range` and `DataUtilities` will be defined differently due to the differences of the two classes' functionalities.
 
-### Testing Objectives
+### `Range`
 
-Within the Range class, the following 5 methods are to be explored:
-·         shift(Range base, double delta, boolean allowZeroCrossing)
-·         isNaNRange()
-·         expandToInclude(Range range, double value)
-·         combineIgnoringNaN(Range range1, Range range2)
-·         intersects(double b0, double b1)
+The below five methods are to be explored
 
-As with the Data Utilities class, the following 5 methods are to be explored:
-·         calculateColumnTotal(Values2D data, int column)
-·         calculateColumnTotal(Values2D data, int column, int[] validRows)
-·         calculateRowTotal(Values2D data, int row)
-·         calculateRowTotal(Values2D data, int row, int[] validCols)
-·         getCumulativePercentages(KeyedValues data)
+- `shift(Range base, double delta, boolean allowZeroCrossing)`
+- `isNaNRange()`
+- `expandToInclude(Range range, double value)`
+- `combineIgnoringNaN(Range range1, Range range2)`
+- `intersects(double b0, double b1)`
 
-### Testing Type
-For the Range Class, traditional unit testing will be used. As for the Data Utilities Class, given that the 5 tests contains uncertain parameters like interfaces (ie. Values2D and KeyedValues), mock testing will be utilized.
-
-### Scope
-The scope should be individually discussed between the two classes.
-#### Range Class
-For the range class, the range of -10 to 10 is used and testing of its methods will use input partitions that abides to the following BVT Test RANGE (Lower - Upper): 
+For the range class, the range of -10 to 10 is used and testing of its methods will use input partitions that abides to the following BVT Test RANGE (Lower - Upper):
 
 1 BLB - LB
 1 BLB - 1 ALB
@@ -67,77 +53,83 @@ UB - 1 AUB
 
 [insert the boundary graph]
 
-#### DataUtilities Class
-For the DataUtilities class, there are two classes (Values2D and KeyedValues) that require the use of jMock.
+### `DataUtilities`
+
+The below five methods are to be explored. `jMock` is used to mock the interfaces `Values2D` and `KeyedValues` which are used as parameters to these methods
+
+- `calculateColumnTotal(Values2D data, int column)`
+- `calculateColumnTotal(Values2D data, int column, int[] validRows)`
+- `calculateRowTotal(Values2D data, int row)`
+- `calculateRowTotal(Values2D data, int row, int[] validCols)`
+- `getCumulativePercentages(KeyedValues data)`
 
 For the Values2D object, the input partition is a 3x3 matrix with which double values are used at each cell of the array from which the result is asserted.
 
 [Insert keyed values stuff here]
 
-
 ## Test cases developed
 
-| API method                                                 | Test method           | Input partitions |
-| ---------------------------------------------------------- | --------------------- | ---------------- |
-| `Range.shift(Range, double, boolean)`                      | `RangeTest.*`         |                  |
-| `Range.isNaNRange()`                                       | `RangeTest.*`         |                  |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputBLB`         |     (-10,10),   -11           |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputLB`         |       (-10,10), -10           |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputALB`         |     (-10,10),     -9         |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputBUB`         |  (-10,10),    9            |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputUB`         |  (-10,10),  10                |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputAUB`         |  (-10,-10)    11            |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputDoubleMax`         |  (-10,10), Double.MAX_VALUE             |
-| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputNegativeDoubleMax`         |  (-10,10), -Double.MAX_VALUE               |
-| `Range.combineIgnoringNaN(Range, Range)`                   | `RangeTest.*`         |                  |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInput0And0`         |  (0,0)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndALB`         |  (-15,-8)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndAUB`         |  (-15,15)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndLB`         |  (-15,-10)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndMAX`         |  (-15,Double.MAX_VALUE)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBUBAndUB`         |  (9,10)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputUBAndAUB`         |  (10,15)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputLBAndALB`         |  (-10,7)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputLBAndUB`         |  (-10,-10)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputMINAndAUB`         |  (Double.MIN_VALUE,15)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputNaNAnd1`         |  (Double.NaN,1)                |
-| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputNOMAndNOM`         |  (-1,1)                |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalAllRowsFirstColumn` |  [7.5,2.5,5.0], 0                |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        |  `DataUtilitiesTest.calculateColumnTotalAllRowsLastColumn` | [7.5,2.5,5.0], 2                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalAllRowsMiddleColumn` |  [7.5,2.5,5.0], 1                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMaxValueAndFirstColumn` | [Double.MAX_VALUE,2.5,-2.5], 0                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMaxValueColumn` |  [7.5,2.5,5.0], Double.MAX_VALUE                |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueAndFirstColumn` | [Double.MIN_VALUE,2.5,-2.5], 0                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueColumn` | [7.5,2.5,5.0], Double.MIN_VALUE                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithSumOf0AndFirstColumn` | [7.5,2.5,-10], 0                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidFirstColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidMiddleColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidLastColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidFirstColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidFirstColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidFirstColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidMiddleColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidMiddleColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidLastColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidLastColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidLastColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstAndLastRowValidFirstColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleAndLastRowValidLastColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBMiddleColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMaxRowsMaxColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalBelowMaxRowsBelowMaxColumn` |                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalWithMaxValue` |                  |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalFirstRow` | [7.5,2.5,5.0], 0  |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalLastRow` | [7.5,2.5,5.0], 2  |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalMiddleRow` | [7.5,2.5,5.0], 1 |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMaxValueAndFirstRow` |[Double.MAX_VALUE,2.5,-2.5], 0       |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMaxValueRow()` | [7.5,2.5,5.0], Double.MAX_VALUE                 |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMinValueAndFirstRow` |[Double.MIN_VALUE,2.5,-2.5], 0                   |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMinValueRow` | [7.5,2.5,5.0], Double.MIN_VALUE                 |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithSumOf0AndFirstRow` |  [7.5,2.5,-10], 0                 |
-| `DataUtilities.calculateRowTotal(Values2D, int, int[])`    | `DataUtilitiesTest.*` |                  |
-| `DataUtilities.getCumulativePercentages(KeyedValues)`      | `DataUtilitiesTest.*` |                  |
+| API method                                                 | Test method                                                                   | Input partitions                |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------- |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.*`                                                                 |                                 |
+| `Range.isNaNRange()`                                       | `RangeTest.*`                                                                 |                                 |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputBLB`                                       | (-10,10), -11                   |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputLB`                                        | (-10,10), -10                   |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputALB`                                       | (-10,10), -9                    |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputBUB`                                       | (-10,10), 9                     |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputUB`                                        | (-10,10), 10                    |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputAUB`                                       | (-10,-10) 11                    |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputDoubleMax`                                 | (-10,10), Double.MAX_VALUE      |
+| `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputNegativeDoubleMax`                         | (-10,10), -Double.MAX_VALUE     |
+| `Range.combineIgnoringNaN(Range, Range)`                   | `RangeTest.*`                                                                 |                                 |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInput0And0`                                           | (0,0)                           |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndALB`                                       | (-15,-8)                        |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndAUB`                                       | (-15,15)                        |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndLB`                                        | (-15,-10)                       |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBLBAndMAX`                                       | (-15,Double.MAX_VALUE)          |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputBUBAndUB`                                        | (9,10)                          |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputUBAndAUB`                                        | (10,15)                         |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputLBAndALB`                                        | (-10,7)                         |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputLBAndUB`                                         | (-10,-10)                       |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputMINAndAUB`                                       | (Double.MIN_VALUE,15)           |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputNaNAnd1`                                         | (Double.NaN,1)                  |
+| `Range.intersects(double, double)`                         | `RangeTest.intersectWithInputNOMAndNOM`                                       | (-1,1)                          |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalAllRowsFirstColumn`                    | [7.5,2.5,5.0], 0                |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalAllRowsLastColumn`                     | [7.5,2.5,5.0], 2                |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalAllRowsMiddleColumn`                   | [7.5,2.5,5.0], 1                |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMaxValueAndFirstColumn`            | [Double.MAX_VALUE,2.5,-2.5], 0  |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMaxValueColumn`                    | [7.5,2.5,5.0], Double.MAX_VALUE |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueAndFirstColumn`            | [Double.MIN_VALUE,2.5,-2.5], 0  |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueColumn`                    | [7.5,2.5,5.0], Double.MIN_VALUE |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithSumOf0AndFirstColumn`              | [7.5,2.5,-10], 0                |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidFirstColumn`               |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidMiddleColumn`              |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidLastColumn`                |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidFirstColumn`              |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidFirstColumn`             |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidFirstColumn`               |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidMiddleColumn`             |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidMiddleColumn`              |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidLastColumn`               |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidLastColumn`              |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidLastColumn`                |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstAndLastRowValidFirstColumn`       |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleAndLastRowValidLastColumn`       |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBMiddleColumn`             |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMaxRowsMaxColumn`                      |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalBelowMaxRowsBelowMaxColumn`            |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalWithMaxValue`                          |                                 |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalFirstRow`                                 | [7.5,2.5,5.0], 0                |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalLastRow`                                  | [7.5,2.5,5.0], 2                |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalMiddleRow`                                | [7.5,2.5,5.0], 1                |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMaxValueAndFirstRow`                  | [Double.MAX_VALUE,2.5,-2.5], 0  |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMaxValueRow()`                        | [7.5,2.5,5.0], Double.MAX_VALUE |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMinValueAndFirstRow`                  | [Double.MIN_VALUE,2.5,-2.5], 0  |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithMinValueRow`                          | [7.5,2.5,5.0], Double.MIN_VALUE |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalWithSumOf0AndFirstRow`                    | [7.5,2.5,-10], 0                |
+| `DataUtilities.calculateRowTotal(Values2D, int, int[])`    | `DataUtilitiesTest.*`                                                         |                                 |
+| `DataUtilities.getCumulativePercentages(KeyedValues)`      | `DataUtilitiesTest.*`                                                         |                                 |
 
 Text…
 
@@ -155,10 +147,10 @@ Each of the four tester will complete at least 1 unit testing of the `Range` cla
 | `Range.isNaNRange()`                                       | Bhavyai Gupta            |
 | `Range.expandToInclude(Range, double)`                     | Drew Burritt             |
 | `Range.combineIgnoringNaN(Range, Range)`                   | Bhavyai Gupta            |
-| `Range.intersects(double, double)`                         | Michael                  |
-| `DataUtilities.calculateColumnTotal(Values2D, int)`        | Michael                  |
+| `Range.intersects(double, double)`                         | Michael Man Yin Lee      |
+| `DataUtilities.calculateColumnTotal(Values2D, int)`        | Michael Man Yin Lee      |
 | `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | Drew Burritt             |
-| `DataUtilities.calculateRowTotal(Values2D, int)`           | Michael                  |
+| `DataUtilities.calculateRowTotal(Values2D, int)`           | Michael Man Yin Lee      |
 | `DataUtilities.calculateRowTotal(Values2D, int, int[])`    | Bhavyai Gupta            |
 | `DataUtilities.getCumulativePercentages(KeyedValues)`      | Okeoghenemarho Obuareghe |
 
@@ -169,7 +161,6 @@ One of the hardest challenges is to agree on the scope as well as what values fo
 In the end, after many thorough discussions, we have devised a set of input partitions that we believe, as a team, will effectively test the methods without overburdening the team.
 
 Another difficulty encounter is that there were some confusion that stems from the failed messages from the DataUtilities test using jMock. After some troubleshooting, it was found that we need the Hamcrest external jar (not the given one) in order to get the tests to work.
-
 
 ## Comments and feedback
 
