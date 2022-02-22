@@ -60,7 +60,6 @@ public class RangeTest_isNaNRange {
 
     @After
     public void tearDown() throws Exception {
-        this.exampleRange = null;
     }
 
     @AfterClass
