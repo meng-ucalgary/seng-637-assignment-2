@@ -200,16 +200,16 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 			{
 				one(values).getRowCount();
 				will(returnValue(3));
-				one(values).getValue(0, 0);
+				one(values).getValue(0, 1);
 				will(returnValue(7.5));
-				one(values).getValue(1, 0);
+				one(values).getValue(1, 1);
 				will(returnValue(2.5));
-				one(values).getValue(2, 0);
+				one(values).getValue(2, 1);
 				will(returnValue(5.0));
 			}
 		});
 
-		double result = DataUtilities.calculateColumnTotal(values, 0, new int[] { 2 });
+		double result = DataUtilities.calculateColumnTotal(values, 1, new int[] { 2 });
 		assertEquals(5.0, result, .000000001d);
 
 	}
@@ -324,8 +324,8 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	// Invalid rows
 
 	// Invalid rows
-	@Test
-	public void calculateColumnTotalInvalidRowAUBMiddleColumn() {
+	@Test 
+	public void calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn() {
 
 		mockingContext.checking(new Expectations() {
 			{
@@ -337,13 +337,13 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 			}
 		});
 
-		double result = DataUtilities.calculateColumnTotal(values, 2, new int[] { 1, 5 });
+		double result = DataUtilities.calculateColumnTotal(values, 2, new int[] { 1, 3 });
 		assertEquals(7.5, result, .000000001d);
 
 	}
 
 	@Test
-	public void calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn() {
+	public void calculateColumnTotalInvalidRowAUBMiddleColumn() {
 
 		mockingContext.checking(new Expectations() {
 			{
@@ -409,6 +409,25 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 
 		double result = DataUtilities.calculateColumnTotal(values, Integer.MAX_VALUE-1, new int[] { 0, Integer.MAX_VALUE-1});
 		assertEquals(7.5, result, .000000001d);
+
+	}
+	@Test
+	public void calculateColumnTotalWithMaxValue() {
+		double max = Math.pow(2, 53); //Max integer with integer precision
+		mockingContext.checking(new Expectations() {
+			{
+				one(values).getRowCount();
+				will(returnValue(3));
+				one(values).getValue(0, 0);
+				will(returnValue(max-1));
+				one(values).getValue(1, 0);
+				will(returnValue(1));
+
+			}
+		});
+
+		double result = DataUtilities.calculateColumnTotal(values, 0, new int[] { 0, 1});
+		assertEquals(max, result, .000000001d);
 
 	}
 }

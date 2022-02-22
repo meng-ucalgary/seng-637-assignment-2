@@ -30,7 +30,7 @@ public class RangeTest_expandToInclude {
 
 	@Test
     public void expandToIncludeWithInputBUB() {
-        assertEquals("Testing epanding range to include value BUB (range shouldn't change)", new Range(-10, 10), Range.expandToInclude(testRange, -9));       
+        assertEquals("Testing epanding range to include value BUB (range shouldn't change)", new Range(-10, 10), Range.expandToInclude(testRange, 9));       
     }
 	
 	@Test
