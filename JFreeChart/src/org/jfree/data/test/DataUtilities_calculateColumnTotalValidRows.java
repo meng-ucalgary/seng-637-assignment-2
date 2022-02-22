@@ -353,7 +353,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 			}
 		});
 
-		double result = DataUtilities.calculateColumnTotal(values, 1, new int[] { 5 });
+		double result = DataUtilities.calculateColumnTotal(values, 1, new int[] { 3});
 		assertEquals(0, result, .000000001d);
 
 	}

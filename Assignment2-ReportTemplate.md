@@ -102,24 +102,25 @@ For the Values2D object, the input partition is a 3x3 matrix with which double v
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueAndFirstColumn`            | [Double.MIN_VALUE,2.5,-2.5], 0  |
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithMinValueColumn`                    | [7.5,2.5,5.0], Double.MIN_VALUE |
 | `DataUtilities.calculateColumnTotal(Values2D, int)`        | `DataUtilitiesTest.calculateColumnTotalWithSumOf0AndFirstColumn`              | [7.5,2.5,-10], 0                |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidFirstColumn`               |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidMiddleColumn`              |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidLastColumn`                |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidFirstColumn`              |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidFirstColumn`             |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidFirstColumn`               |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidMiddleColumn`             |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidMiddleColumn`              |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidLastColumn`               |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidLastColumn`              |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidLastColumn`                |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstAndLastRowValidFirstColumn`       |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleAndLastRowValidLastColumn`       |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBMiddleColumn`             |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMaxRowsMaxColumn`                      |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalBelowMaxRowsBelowMaxColumn`            |                                 |
-| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalWithMaxValue`                          |                                 |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidFirstColumn`               | [7.5,2.5,5.0], 0 , [0,1,2]      |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidMiddleColumn`              | [7.5,2.5,5.0], 1 , [0,1,2]      |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalAllRowsValidLastColumn`                | [7.5,2.5,5.0], 2 , [0,1,2]      |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidFirstColumn`              | [7.5,2.5,5.0], 0 , [0]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidFirstColumn`             | [7.5,2.5,5.0], 0 , [1]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidFirstColumn`               | [7.5,2.5,5.0], 0 , [2]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidMiddleColumn`             | [7.5,2.5,5.0], 1 , [0]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidMiddleColumn`            | [7.5,2.5,5.0], 1 , [1]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidMiddleColumn`              | [7.5,2.5,5.0], 1 , [2]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstRowValidLastColumn`               | [7.5,2.5,5.0], 2 , [0]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMiddleRowValidLastColumn`              | [7.5,2.5,5.0], 2 , [1]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalLastRowValidLastColumn`                | [7.5,2.5,5.0], 2 , [2]          |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalFirstAndLastRowValidFirstColumn`       | [7.5,2.5,5.0], 0 , [0,2]        |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` | [7.5], 2 , [1,3]                |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowAUBMiddleColumn`             | [], 1 , [1,2]                   |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalInvalidRowBLBFirstColumn`              | [], 0 , [-1]                    |
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalMaxRowsMaxColumn`                      | [2.5,5] ,Integer.MAX_VALUE, [0,Integer.MAX_VALUE]|
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalBelowMaxRowsBelowMaxColumn`            | [2.5,5] ,Integer.MAX_VALUE-1, [0,Integer.MAX_VALUE-1]|
+| `DataUtilities.calculateColumnTotal(Values2D, int, int[])` | `DataUtilitiesTest.calculateColumnTotalWithMaxValue`                          | [2^53-1,1], 0 , [0,1]           |
 | `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalFirstRow`                                 | [7.5,2.5,5.0], 0                |
 | `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalLastRow`                                  | [7.5,2.5,5.0], 2                |
 | `DataUtilities.calculateRowTotal(Values2D, int)`           | `DataUtilitiesTest.calculateRowTotalMiddleRow`                                | [7.5,2.5,5.0], 1                |
