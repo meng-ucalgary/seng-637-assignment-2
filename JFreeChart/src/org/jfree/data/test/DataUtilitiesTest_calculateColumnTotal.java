@@ -92,7 +92,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	            one(values).getRowCount();
 	            will(returnValue(3));
 	            one(values).getValue(0, 0);
-	            will(returnValue(Double.MAX_VALUE));
+	            will(returnValue(Math.pow(2, 53)));
 	            one(values).getValue(1, 0);
 	            will(returnValue(2.5));
 	            one(values).getValue(2, 0);
@@ -101,7 +101,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0);
-		assertEquals(Double.MAX_VALUE, result, .000000001d);
+		assertEquals(Math.pow(2, 53), result, .000000001d);
 	    
 	}
 	@Test
@@ -112,7 +112,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	            one(values).getRowCount();
 	            will(returnValue(3));
 	            one(values).getValue(0, 0);
-	            will(returnValue(Double.MIN_VALUE));
+	            will(returnValue(Math.pow(2, -53)));
 	            one(values).getValue(1, 0);
 	            will(returnValue(2.5));
 	            one(values).getValue(2, 0);
@@ -121,7 +121,7 @@ public class DataUtilitiesTest_calculateColumnTotal {
 	    });
 		
 		double result = DataUtilities.calculateColumnTotal(values, 0);
-		assertEquals(Double.MIN_VALUE, result, .000000001d);
+		assertEquals(Math.pow(2, -53), result, .000000001d);
 	    
 	}
 	

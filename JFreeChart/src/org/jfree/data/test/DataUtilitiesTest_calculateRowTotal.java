@@ -107,7 +107,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 		assertEquals(0,result,  .000000001d);
 	    
 	}
-	
+	@Test
 	public void calculateRowTotalWithMinValueAndFirstRow() {
 		
 		mockingContext.checking(new Expectations() {
@@ -115,7 +115,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	            one(values).getColumnCount();
 	            will(returnValue(3));
 	            one(values).getValue(0, 0);
-	            will(returnValue(Double.MIN_VALUE));
+	            will(returnValue(Math.pow(2, -53)));
 	            one(values).getValue(0, 1);
 	            will(returnValue(2.5));
 	            one(values).getValue(0, 2);
@@ -124,7 +124,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	    });
 		
 		double result = DataUtilities.calculateRowTotal(values, 0);
-		assertEquals(Double.MIN_VALUE, result, .000000001d);
+		assertEquals(Math.pow(2, -53), result, .000000001d);
 	    
 	}
 	
@@ -178,7 +178,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	            one(values).getColumnCount();
 	            will(returnValue(3));
 	            one(values).getValue(0, 0);
-	            will(returnValue(Double.MAX_VALUE));
+	            will(returnValue(Math.pow(2, 53)));
 	            one(values).getValue(0, 1);
 	            will(returnValue(2.5));
 	            one(values).getValue(0, 2);
@@ -187,7 +187,7 @@ public class DataUtilitiesTest_calculateRowTotal {
 	    });
 		
 		double result = DataUtilities.calculateRowTotal(values, 0);
-		assertEquals(Double.MAX_VALUE, result, .000000001d);
+		assertEquals(Math.pow(2, 53), result, .000000001d);
 	    
 	    
 	}
