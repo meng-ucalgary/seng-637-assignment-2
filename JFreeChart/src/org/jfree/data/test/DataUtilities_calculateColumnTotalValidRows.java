@@ -357,7 +357,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 		assertEquals(0, result, .000000001d);
 
 	}
-
+	
 	@Test
 	public void calculateColumnTotalInvalidRowBLBFirstColumn() {
 
@@ -413,7 +413,7 @@ public class DataUtilities_calculateColumnTotalValidRows extends DataUtilities {
 	}
 	@Test
 	public void calculateColumnTotalWithMaxValue() {
-		double max = Math.pow(2, 53); //Max integer with integer precision
+		double max = Math.pow(2, 53); //Max double with integer precision
 		mockingContext.checking(new Expectations() {
 			{
 				one(values).getRowCount();
