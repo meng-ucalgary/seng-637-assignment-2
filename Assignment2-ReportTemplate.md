@@ -71,7 +71,16 @@ For the Values2D object, the input partition is a 3x3 matrix with which double v
 
 | API method                                                 | Test method                                                                   | Input partitions                                      |
 | ---------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------- |
-| `Range.shift(Range, double, boolean)`                      | `RangeTest.*`                                                                 |                                                       |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftRightToMaxValueAtZeroRangeAllowZeroCrossing`                  | (0.0,0.0), Double.MAX_VALUE, true                     |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftRightAtZeroRangeDisallowZeroCrossing`                         | (0.0,0.0), 4.0, false                                 |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftLeftToMinValueAtZeroRangeAllowZeroCrossing`                   | (0.0,0.0), Double.MIN_VALUE, true                     |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftLeftAtZeroRangeDisallowZeroCrossing`                          | (0.0,0.0), -5.0, false                                |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftRightNegativeRangeAllowZeroCrossingForLbAndUb`                | (-10.0,-5.0), 15.0, true                              |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftRightNegativeRangeDisallowZeroCrossingForLbAndUb`             | (-10.0, -5.0), 18.0, false                            |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftLeftPostiveRangeAllowZeroCrossingForLbAndUb`                  | (5.0, 7.0), -10.0, true                               |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftLeftPostiveRangeDisallowZeroCrossingForLbAndUb`               | (5.0, 7.0), -9.0, false                               |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftRightNegativeLbAndPostiveUbRangeDisallowZeroCrossing`         | (-3.0, 7.0), 6.0, false                               |
+| `Range.shift(Range, double, boolean)`                      | `RangeTest.shiftLeftNegativeLbAndPostiveUbRangeDisallowZeroCrossing`          | (-3.0, 7.0), -8.0, false                              |
 | `Range.isNaNRange()`                                       | `RangeTest.*`                                                                 |                                                       |
 | `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputBLB`                                       | (-10,10), -11                                         |
 | `Range.expandToInclude(Range, double)`                     | `RangeTest.expandToIncludeWithInputLB`                                        | (-10,10), -10                                         |
