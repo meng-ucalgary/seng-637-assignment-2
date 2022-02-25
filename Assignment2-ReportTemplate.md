@@ -157,59 +157,78 @@ The below five methods are to be explored.
 
 ### 6. `DataUtilities.calculateRowTotal(Values2D, int)`
 
-| Test case                                  | Input partitions                |
-| ------------------------------------------ | ------------------------------- |
-| `calculateRowTotalFirstRow`                | [7.5,2.5,5.0], 0                |
-| `calculateRowTotalLastRow`                 | [7.5,2.5,5.0], 2                |
-| `calculateRowTotalMiddleRow`               | [7.5,2.5,5.0], 1                |
-| `calculateRowTotalWithMaxValueAndFirstRow` | [Double.MAX_VALUE,2.5,-2.5], 0  |
-| `calculateRowTotalWithMaxValueRow()`       | [7.5,2.5,5.0], Double.MAX_VALUE |
-| `calculateRowTotalWithMinValueAndFirstRow` | [Double.MIN_VALUE,2.5,-2.5], 0  |
-| `calculateRowTotalWithMinValueRow`         | [7.5,2.5,5.0], Double.MIN_VALUE |
-| `calculateRowTotalWithSumOf0AndFirstRow`   | [7.5,2.5,-10], 0                |
+| Test case                                  | Input partitions                  |
+| ------------------------------------------ | --------------------------------- |
+| `calculateRowTotalFirstRow`                | [7.5, 2.5, 5.0], 0                |
+| `calculateRowTotalLastRow`                 | [7.5, 2.5, 5.0], 2                |
+| `calculateRowTotalMiddleRow`               | [7.5, 2.5, 5.0], 1                |
+| `calculateRowTotalWithMaxValueAndFirstRow` | [Double.MAX_VALUE, 2.5, -2.5], 0  |
+| `calculateRowTotalWithMaxValueRow()`       | [7.5, 2.5, 5.0], Double.MAX_VALUE |
+| `calculateRowTotalWithMinValueAndFirstRow` | [Double.MIN_VALUE, 2.5, -2.5], 0  |
+| `calculateRowTotalWithMinValueRow`         | [7.5, 2.5, 5.0], Double.MIN_VALUE |
+| `calculateRowTotalWithSumOf0AndFirstRow`   | [7.5, 2.5, -10], 0                |
 
 ### 7. `DataUtilities.calculateRowTotal(Values2D, int, int[])`
 
-| Test case | Input partitions |
-| --------- | ---------------- |
-| `*`       |                  |
+| Test case                                                   | Input partitions                                            |
+| ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `calculateRowTotalFirstRowValidAllColumns`                  | [7.16, 3.14, 5.23], 0, [0, 1, 2]                            |
+| `calculateRowTotalMiddleRowValidAllColumns`                 | [7.16, 3.14, 5.23], 1, [0, 1, 2]                            |
+| `calculateRowTotalLastRowValidAllColumns`                   | [7.16, 3.14, 5.23], 2, [0, 1, 2]                            |
+| `calculateRowTotalFirstRowValidFirstColumn`                 | [7.16, 3.14, 5.23], 0, [0]                                  |
+| `calculateRowTotalFirstRowValidMiddleColumn`                | [7.16, 3.14, 5.23], 0, [1]                                  |
+| `calculateRowTotalFirstRowValidLastColumn`                  | [7.16, 3.14, 5.23], 0, [2]                                  |
+| `calculateRowTotalMiddleRowValidFirstColumn`                | [7.16, 3.14, 5.23], 1, [0]                                  |
+| `calculateRowTotalMiddleRowValidMiddleColumn`               | [7.16, 3.14, 5.23], 1, [1]                                  |
+| `calculateRowTotalMiddleRowValidLastColumn`                 | [7.16, 3.14, 5.23], 1, [2]                                  |
+| `calculateRowTotalLastRowValidFirstColumn`                  | [7.16, 3.14, 5.23], 2, [0]                                  |
+| `calculateRowTotalLastRowValidMiddleColumn`                 | [7.16, 3.14, 5.23], 2, [1]                                  |
+| `calculateRowTotalLastRowValidLastolumn`                    | [7.16, 3.14, 5.23], 2, [2]                                  |
+| `calculateRowTotalFirstRowValidFirstAndLastColumn`          | [7.16, 3.14, 5.23], 0, [0, 2]                               |
+| `calculateRowTotalLastRowValidMiddleAndLastColumn`          | [7.16, 3.14, 5.23], 2, [1, 2]                               |
+| `calculateRowTotalMiddleRowInvalidColumnAUB`                | [7.16, 3.14, 5.23], 1, [3]                                  |
+| `calculateRowTotalLastRowInvalidColumnAUBAndOneValidColumn` | [7.16, 3.14, 5.23], 2, [2, 3]                               |
+| `calculateRowTotalFirstRowInvalidColumnBLB`                 | [], 0, [-1]                                                 |
+| `calculateRowTotalMaxRowsMaxColumn`                         | [7.16, 3.14], Integer.MAX_VALUE [0, Integer.MAX_VALUE]      |
+| `calculateRowTotalBelowMaxRowsBelowMaxColumn`               | [7.16, 3.14], Integer.MAX_VALUE-1, [0, Integer.MAX_VALUE-1] |
+| `calculateRowTotalWithMaxValue`                             | [2^53-1, 1], 0, [0, 1]                                      |
 
 ### 8. `DataUtilities.calculateColumnTotal(Values2D, int)`
 
-| Test case                                        | Input partitions                |
-| ------------------------------------------------ | ------------------------------- |
-| `calculateColumnTotalAllRowsFirstColumn`         | [7.5,2.5,5.0], 0                |
-| `calculateColumnTotalAllRowsLastColumn`          | [7.5,2.5,5.0], 2                |
-| `calculateColumnTotalAllRowsMiddleColumn`        | [7.5,2.5,5.0], 1                |
-| `calculateColumnTotalWithMaxValueAndFirstColumn` | [Double.MAX_VALUE,2.5,-2.5], 0  |
-| `calculateColumnTotalWithMaxValueColumn`         | [7.5,2.5,5.0], Double.MAX_VALUE |
-| `calculateColumnTotalWithMinValueAndFirstColumn` | [Double.MIN_VALUE,2.5,-2.5], 0  |
-| `calculateColumnTotalWithMinValueColumn`         | [7.5,2.5,5.0], Double.MIN_VALUE |
-| `calculateColumnTotalWithSumOf0AndFirstColumn`   | [7.5,2.5,-10], 0                |
+| Test case                                        | Input partitions                   |
+| ------------------------------------------------ | ---------------------------------- |
+| `calculateColumnTotalAllRowsFirstColumn`         | [7.5, 2.5, 5.0], 0                 |
+| `calculateColumnTotalAllRowsMiddleColumn`        | [7.5, 2.5, 5.0], 1                 |
+| `calculateColumnTotalAllRowsLastColumn`          | [7.5, 2.5, 5.0], 2                 |
+| `calculateColumnTotalWithMaxValueAndFirstColumn` | [Double.MAX_VALUE, 2.5, -2.5], 0   |
+| `calculateColumnTotalWithMinValueAndFirstColumn` | [Double.MIN_VALUE, 2.5, -2.5], 0   |
+| `calculateColumnTotalWithMaxValueColumn`         | [7.5, 2.5, 5.0], Integer.MAX_VALUE |
+| `calculateColumnTotalWithMinValueColumn`         | [7.5, 2.5, 5.0], Integer.MIN_VALUE |
+| `calculateColumnTotalWithSumOf0AndFirstColumn`   | [7.5, 2.5, -10], 0                 |
 
 ### 9. `DataUtilities.calculateColumnTotal(Values2D, int, int[])`
 
-| Test case                                                   | Input partitions                                      |
-| ----------------------------------------------------------- | ----------------------------------------------------- |
-| `calculateColumnTotalAllRowsValidFirstColumn`               | [7.5,2.5,5.0], 0 , [0,1,2]                            |
-| `calculateColumnTotalAllRowsValidMiddleColumn`              | [7.5,2.5,5.0], 1 , [0,1,2]                            |
-| `calculateColumnTotalAllRowsValidLastColumn`                | [7.5,2.5,5.0], 2 , [0,1,2]                            |
-| `calculateColumnTotalFirstRowValidFirstColumn`              | [7.5,2.5,5.0], 0 , [0]                                |
-| `calculateColumnTotalMiddleRowValidFirstColumn`             | [7.5,2.5,5.0], 0 , [1]                                |
-| `calculateColumnTotalLastRowValidFirstColumn`               | [7.5,2.5,5.0], 0 , [2]                                |
-| `calculateColumnTotalFirstRowValidMiddleColumn`             | [7.5,2.5,5.0], 1 , [0]                                |
-| `calculateColumnTotalMiddleRowValidMiddleColumn`            | [7.5,2.5,5.0], 1 , [1]                                |
-| `calculateColumnTotalLastRowValidMiddleColumn`              | [7.5,2.5,5.0], 1 , [2]                                |
-| `calculateColumnTotalFirstRowValidLastColumn`               | [7.5,2.5,5.0], 2 , [0]                                |
-| `calculateColumnTotalMiddleRowValidLastColumn`              | [7.5,2.5,5.0], 2 , [1]                                |
-| `calculateColumnTotalLastRowValidLastColumn`                | [7.5,2.5,5.0], 2 , [2]                                |
-| `calculateColumnTotalFirstAndLastRowValidFirstColumn`       | [7.5,2.5,5.0], 0 , [0,2]                              |
-| `calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` | [7.5], 2 , [1,3]                                      |
-| `calculateColumnTotalInvalidRowAUBMiddleColumn`             | [], 1 , [1,2]                                         |
-| `calculateColumnTotalInvalidRowBLBFirstColumn`              | [], 0 , [-1]                                          |
-| `calculateColumnTotalMaxRowsMaxColumn`                      | [2.5,5] ,Integer.MAX_VALUE, [0,Integer.MAX_VALUE]     |
-| `calculateColumnTotalBelowMaxRowsBelowMaxColumn`            | [2.5,5] ,Integer.MAX_VALUE-1, [0,Integer.MAX_VALUE-1] |
-| `calculateColumnTotalWithMaxValue`                          | [2^53-1,1], 0 , [0,1]                                 |
+| Test case                                                   | Input partitions                                        |
+| ----------------------------------------------------------- | ------------------------------------------------------- |
+| `calculateColumnTotalAllRowsValidFirstColumn`               | [7.5, 2.5, 5.0], 0 , [0, 1, 2]                          |
+| `calculateColumnTotalAllRowsValidMiddleColumn`              | [7.5, 2.5, 5.0], 1 , [0, 1, 2]                          |
+| `calculateColumnTotalAllRowsValidLastColumn`                | [7.5, 2.5, 5.0], 2 , [0, 1, 2]                          |
+| `calculateColumnTotalFirstRowValidFirstColumn`              | [7.5, 2.5, 5.0], 0 , [0]                                |
+| `calculateColumnTotalMiddleRowValidFirstColumn`             | [7.5, 2.5, 5.0], 0 , [1]                                |
+| `calculateColumnTotalLastRowValidFirstColumn`               | [7.5, 2.5, 5.0], 0 , [2]                                |
+| `calculateColumnTotalFirstRowValidMiddleColumn`             | [7.5, 2.5, 5.0], 1 , [0]                                |
+| `calculateColumnTotalMiddleRowValidMiddleColumn`            | [7.5, 2.5, 5.0], 1 , [1]                                |
+| `calculateColumnTotalLastRowValidMiddleColumn`              | [7.5, 2.5, 5.0], 1 , [2]                                |
+| `calculateColumnTotalFirstRowValidLastColumn`               | [7.5, 2.5, 5.0], 2 , [0]                                |
+| `calculateColumnTotalMiddleRowValidLastColumn`              | [7.5, 2.5, 5.0], 2 , [1]                                |
+| `calculateColumnTotalLastRowValidLastColumn`                | [7.5, 2.5, 5.0], 2 , [2]                                |
+| `calculateColumnTotalFirstAndLastRowValidFirstColumn`       | [7.5, 2.5, 5.0], 0 , [0, 2]                             |
+| `calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` | [7.5], 2 , [1, 3]                                       |
+| `calculateColumnTotalInvalidRowAUBMiddleColumn`             | [], 1 , [3]                                             |
+| `calculateColumnTotalInvalidRowBLBFirstColumn`              | [], 0 , [-1]                                            |
+| `calculateColumnTotalMaxRowsMaxColumn`                      | [2.5, 5], Integer.MAX_VALUE, [0, Integer.MAX_VALUE]     |
+| `calculateColumnTotalBelowMaxRowsBelowMaxColumn`            | [2.5, 5], Integer.MAX_VALUE-1, [0, Integer.MAX_VALUE-1] |
+| `calculateColumnTotalWithMaxValue`                          | [2^53-1, 1], 0, [0, 1]                                  |
 
 ### 10. `DataUtilities.getCumulativePercentages(KeyedValues)`
 

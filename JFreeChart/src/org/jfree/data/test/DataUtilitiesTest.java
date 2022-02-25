@@ -485,6 +485,73 @@ public class DataUtilitiesTest {
         double result = DataUtilities.calculateRowTotal(values, 2, new int[] { 2, 3 });
         assertEquals(5.23, result, .000000001d);
     }
+
+    @Test
+    public void calculateRowTotalFirstRowInvalidColumnBLB() {
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getRowCount();
+                will(returnValue(3));
+            }
+        });
+
+        double result = DataUtilities.calculateRowTotal(values, 0, new int[] { -1 });
+        assertEquals(0, result, .000000001d);
+    }
+
+    @Test
+    public void calculateRowTotalMaxRowsMaxColumn() {
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getRowCount();
+                will(returnValue(3));
+                one(values).getValue(Integer.MAX_VALUE, 0);
+                will(returnValue(7.16));
+                one(values).getValue(Integer.MAX_VALUE, Integer.MAX_VALUE);
+                will(returnValue(3.14));
+            }
+        });
+
+        double result = DataUtilities.calculateRowTotal(values, Integer.MAX_VALUE, new int[] { 0, Integer.MAX_VALUE });
+        assertEquals(10.3, result, .000000001d);
+    }
+
+    @Test
+    public void calculateRowTotalBelowMaxRowsBelowMaxColumn() {
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getRowCount();
+                will(returnValue(3));
+                one(values).getValue(Integer.MAX_VALUE - 1, 0);
+                will(returnValue(7.16));
+                one(values).getValue(Integer.MAX_VALUE - 1, Integer.MAX_VALUE - 1);
+                will(returnValue(3.14));
+            }
+        });
+
+        double result = DataUtilities.calculateRowTotal(values, Integer.MAX_VALUE - 1,
+                new int[] { 0, Integer.MAX_VALUE - 1 });
+        assertEquals(10.3, result, .000000001d);
+    }
+
+    @Test
+    public void calculateRowTotalWithMaxValue() {
+        double max = Math.pow(2, 53); // Max double with integer precision
+
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getRowCount();
+                will(returnValue(3));
+                one(values).getValue(0, 0);
+                will(returnValue(max - 1));
+                one(values).getValue(0, 1);
+                will(returnValue(1));
+            }
+        });
+
+        double result = DataUtilities.calculateRowTotal(values, 0, new int[] { 0, 1 });
+        assertEquals(max, result, .000000001d);
+    }
     // ------------------------------------------------------------------------
 
     // test cases for calculateColumnTotal(Values2D, int) ---------------------
@@ -749,7 +816,6 @@ public class DataUtilitiesTest {
                 will(returnValue(2.5));
                 one(values).getValue(2, 0);
                 will(returnValue(5.0));
-
             }
         });
 
@@ -917,7 +983,6 @@ public class DataUtilitiesTest {
                 will(returnValue(3));
                 one(values).getValue(1, 2);
                 will(returnValue(7.5));
-
             }
         });
 
@@ -931,7 +996,6 @@ public class DataUtilitiesTest {
             {
                 one(values).getRowCount();
                 will(returnValue(3));
-
             }
         });
 
@@ -945,7 +1009,6 @@ public class DataUtilitiesTest {
             {
                 one(values).getRowCount();
                 will(returnValue(3));
-
             }
         });
 
@@ -963,7 +1026,6 @@ public class DataUtilitiesTest {
                 will(returnValue(2.5));
                 one(values).getValue(Integer.MAX_VALUE, Integer.MAX_VALUE);
                 will(returnValue(5.0));
-
             }
         });
 
@@ -982,7 +1044,6 @@ public class DataUtilitiesTest {
                 will(returnValue(2.5));
                 one(values).getValue(Integer.MAX_VALUE - 1, Integer.MAX_VALUE - 1);
                 will(returnValue(5.0));
-
             }
         });
 
@@ -994,6 +1055,7 @@ public class DataUtilitiesTest {
     @Test
     public void calculateColumnTotalWithMaxValue() {
         double max = Math.pow(2, 53); // Max double with integer precision
+
         mockingContext.checking(new Expectations() {
             {
                 one(values).getRowCount();
@@ -1002,7 +1064,6 @@ public class DataUtilitiesTest {
                 will(returnValue(max - 1));
                 one(values).getValue(1, 0);
                 will(returnValue(1));
-
             }
         });
 
