@@ -144,22 +144,22 @@ public class RangeTest {
     // test cases for intersects(double, double) ------------------------------
     @Test
     public void intersectsWithInputBLBAndLB() {
-        assertFalse(this.exampleRange.intersects(-15, -10));
+        assertFalse(this.exampleRange.intersects(-10.00001, -10));
     }
 
     @Test
     public void intersectsWithInputBLBAndALB() {
-        assertTrue(this.exampleRange.intersects(-15, -8));
+        assertTrue(this.exampleRange.intersects(-10.00001, -9.99999));
     }
 
     @Test
     public void intersectsWithInputBLBAndAUB() {
-        assertTrue(this.exampleRange.intersects(-15, 15));
+        assertTrue(this.exampleRange.intersects(-10.00001, 10.00001));
     }
 
     @Test
     public void intersectsWithInputLBAndALB() {
-        assertTrue(this.exampleRange.intersects(-10, 7));
+        assertTrue(this.exampleRange.intersects(-10, -9.99999));
     }
 
     @Test
@@ -174,22 +174,22 @@ public class RangeTest {
 
     @Test
     public void intersectsWithInputBUBAndUB() {
-        assertTrue(this.exampleRange.intersects(9, 10));
+        assertTrue(this.exampleRange.intersects(9.99999, 10));
     }
 
     @Test
     public void intersectsWithInputUBAndAUB() {
-        assertTrue(this.exampleRange.intersects(10, 15));
+        assertFalse(this.exampleRange.intersects(10, 10.00001));
     }
 
     @Test
     public void intersectsWithInputMINAndAUB() {
-        assertTrue(this.exampleRange.intersects(Double.MIN_VALUE, 15));
+        assertTrue(this.exampleRange.intersects(Double.MIN_VALUE, 10.00001));
     }
 
     @Test
     public void intersectsWithInputBLBAndMAX() {
-        assertTrue(this.exampleRange.intersects(-15, Double.MAX_VALUE));
+        assertTrue(this.exampleRange.intersects(-10.00001, Double.MAX_VALUE));
     }
 
     @Test
