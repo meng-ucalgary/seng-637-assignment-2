@@ -33,15 +33,15 @@ The test plan for `Range` and `DataUtilities` will be defined differently due to
 
 For this class, an `exampleRange` of -10 to 10 is used by all the test cases. Additional ranges are created depending upon specific test cases. Since the `exampleRange` is -10 to 10, the following are the BVT notations and their values
 
-| BVT Notation | Value                     |
-| ------------ | ------------------------- |
-| BLB          | -10.00001                 |
-| LB           | -10                       |
-| ALB          | -9.99999                  |
-| NOM          | Any `int` between -9 to 9 |
-| BUB          | 9.99999                   |
-| UB           | 10                        |
-| AUB          | 10.00001                  |
+| BVT Notation | Value                        |
+| ------------ | ---------------------------- |
+| BLB          | -10.00001                    |
+| LB           | -10                          |
+| ALB          | -9.99999                     |
+| NOM          | Any `double` between -9 to 9 |
+| BUB          | 9.99999                      |
+| UB           | 10                           |
+| AUB          | 10.00001                     |
 
 The below five methods are to be explored
 
@@ -134,9 +134,24 @@ The below five methods are to be explored.
 
 ### 5. `Range.combineIgnoringNaN(Range, Range)`
 
-| Test case | Input partitions |
-| --------- | ---------------- |
-| `*`       |                  |
+| Test case                                 | Input partitions                    |
+| ----------------------------------------- | ----------------------------------- |
+| `combineIgnoringNaNWithSmallerRange`      | (-10, 10), (-5, 6)                  |
+| `combineIgnoringNaNWithDisjointRange`     | (-10, 10), (20, 50)                 |
+| `combineIgnoringNaNWithNull`              | (-10, 10), null                     |
+| `combineIgnoringNaNWithLowerBoundMinimum` | (-10, 10), (-Double.MAX_VALUE, -20) |
+| `combineIgnoringNaNWithLowerBoundNaN`     | (-10, 10), (Double.NaN, -20)        |
+| `combineIgnoringNaNWithLB`                | (-10, 10), (-10, 20)                |
+| `combineIgnoringNaNWithALB`               | (-10, 10), (-9.99999, 20)           |
+| `combineIgnoringNaNWithBLB`               | (-10, 10), (-10.00001, 20)          |
+| `combineIgnoringNaNWithUpperBoundMaximum` | (-10, 10), (20, Double.MAX_VALUE)   |
+| `combineIgnoringNaNWithUpperBoundNaN`     | (-10, 10), (20, Double.NaN)         |
+| `combineIgnoringNaNWithUB`                | (-10, 10), (-20, 10)                |
+| `combineIgnoringNaNWithAUB`               | (-10, 10), (-20, 10.00001)          |
+| `combineIgnoringNaNWithBUB`               | (-10, 10), (-20, 9.99999)           |
+| `combineIgnoringNaNWithBothBoundNaN`      | (-10, 10), (Double.NaN, Double.NaN) |
+| `combineIgnoringNaNWithZeroRange`         | (-10, 10), (0, 0)                   |
+| `combineIgnoringNaNWithItself`            | (-10, 10), (-10, 10)                |
 
 ### 6. `DataUtilities.calculateRowTotal(Values2D, int)`
 
