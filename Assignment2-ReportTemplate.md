@@ -35,13 +35,13 @@ For this class, an `exampleRange` of -10 to 10 is used by all the test cases. Ad
 
 | BVT Notation | Value                     |
 | ------------ | ------------------------- |
-| BLB          | -11                       |
+| BLB          | -10.00001                 |
 | LB           | -10                       |
-| ALB          | -9                        |
+| ALB          | -9.99999                  |
 | NOM          | Any `int` between -9 to 9 |
-| BUB          | 9                         |
+| BUB          | 9.99999                   |
 | UB           | 10                        |
-| AUB          | 11                        |
+| AUB          | 10.00001                  |
 
 The below five methods are to be explored
 
