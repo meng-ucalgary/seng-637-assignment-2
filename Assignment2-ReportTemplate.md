@@ -33,15 +33,15 @@ The test plan for `Range` and `DataUtilities` will be defined differently due to
 
 For this class, an `exampleRange` of -10 to 10 is used by all the test cases. Additional ranges are created depending upon specific test cases. Since the `exampleRange` is -10 to 10, the following are the BVT notations and their values
 
-| BVT Notation | Value                        |
-| ------------ | ---------------------------- |
-| BLB          | -10.00001                    |
-| LB           | -10                          |
-| ALB          | -9.99999                     |
-| NOM          | Any `double` between -9 to 9 or other standard value (depending on method)|
-| BUB          | 9.99999                      |
-| UB           | 10                           |
-| AUB          | 10.00001                     |
+| BVT Notation | Value                                                                      |
+| ------------ | -------------------------------------------------------------------------- |
+| BLB          | -10.00001                                                                  |
+| LB           | -10                                                                        |
+| ALB          | -9.99999                                                                   |
+| NOM          | Any `double` between -9 to 9 or other standard value (depending on method) |
+| BUB          | 9.99999                                                                    |
+| UB           | 10                                                                         |
+| AUB          | 10.00001                                                                   |
 
 The below five methods are to be explored
 
@@ -121,16 +121,18 @@ The below five methods are to be explored.
 
 ### 4. `Range.expandToInclude(Range, double)`
 
-| Test case                                   | Input partitions            |
-| ------------------------------------------- | --------------------------- |
-| `expandToIncludeWithInputBLB`               | (-10,10), -11               |
-| `expandToIncludeWithInputLB`                | (-10,10), -10               |
-| `expandToIncludeWithInputALB`               | (-10,10), -9                |
-| `expandToIncludeWithInputBUB`               | (-10,10), 9                 |
-| `expandToIncludeWithInputUB`                | (-10,10), 10                |
-| `expandToIncludeWithInputAUB`               | (-10,-10) 11                |
-| `expandToIncludeWithInputDoubleMax`         | (-10,10), Double.MAX_VALUE  |
-| `expandToIncludeWithInputNegativeDoubleMax` | (-10,10), -Double.MAX_VALUE |
+| Test case                                   | Input partitions             |
+| ------------------------------------------- | ---------------------------- |
+| `expandToIncludeWithInputBLB`               | (-10, 10), -10.00001         |
+| `expandToIncludeWithInputLB`                | (-10, 10), -10               |
+| `expandToIncludeWithInputALB`               | (-10, 10), -9.99999          |
+| `expandToIncludeWithInputBUB`               | (-10, 10), 9.99999           |
+| `expandToIncludeWithInputUB`                | (-10, 10), 10                |
+| `expandToIncludeWithInputAUB`               | (-10, 10), 10.00001          |
+| `expandToIncludeWithInputPositive`          | (-10, 10), 25                |
+| `expandToIncludeWithInputNegative`          | (-10, 10), -25               |
+| `expandToIncludeWithInputDoubleMax`         | (-10, 10), Double.MAX_VALUE  |
+| `expandToIncludeWithInputNegativeDoubleMax` | (-10, 10), -Double.MAX_VALUE |
 
 ### 5. `Range.combineIgnoringNaN(Range, Range)`
 
