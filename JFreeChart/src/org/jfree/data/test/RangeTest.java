@@ -202,7 +202,7 @@ public class RangeTest {
         assertTrue(this.exampleRange.intersects(Double.NaN, 1));
     }
     // ------------------------------------------------------------------------
-    
+
     // test cases for expandToInclude -----------------------------------------
     @Test
     public void expandToIncludeWithInputBLB() {
@@ -239,6 +239,7 @@ public class RangeTest {
         assertEquals("Testing epanding range to include value AUB ", new Range(-10, 10.00001),
                 Range.expandToInclude(this.exampleRange, 10.00001));
     }
+
     @Test
     public void expandToIncludeWithInputPositive() {
         assertEquals("Testing epanding range to include value at LB (range shouldn't change)", new Range(-10, 25),

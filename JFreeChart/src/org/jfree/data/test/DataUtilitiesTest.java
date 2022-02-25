@@ -490,7 +490,7 @@ public class DataUtilitiesTest {
     public void calculateRowTotalFirstRowInvalidColumnBLB() {
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount();
+                one(values).getColumnCount();
                 will(returnValue(3));
             }
         });
@@ -503,7 +503,7 @@ public class DataUtilitiesTest {
     public void calculateRowTotalMaxRowsMaxColumn() {
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount();
+                one(values).getColumnCount();
                 will(returnValue(3));
                 one(values).getValue(Integer.MAX_VALUE, 0);
                 will(returnValue(7.16));
@@ -520,7 +520,7 @@ public class DataUtilitiesTest {
     public void calculateRowTotalBelowMaxRowsBelowMaxColumn() {
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount();
+                one(values).getColumnCount();
                 will(returnValue(3));
                 one(values).getValue(Integer.MAX_VALUE - 1, 0);
                 will(returnValue(7.16));
@@ -540,7 +540,7 @@ public class DataUtilitiesTest {
 
         mockingContext.checking(new Expectations() {
             {
-                one(values).getRowCount();
+                one(values).getColumnCount();
                 will(returnValue(3));
                 one(values).getValue(0, 0);
                 will(returnValue(max - 1));
