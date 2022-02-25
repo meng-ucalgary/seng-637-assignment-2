@@ -23,7 +23,7 @@ The `Range` class is best described as representing an immutable range of values
 
 ## Video demo
 
-Link to the video demonstration of testing is _TBA_.
+Link to the video demonstration of testing is [here](https://youtu.be/gPVR7DnBnlg).
 
 ## Detailed description of unit test strategy
 

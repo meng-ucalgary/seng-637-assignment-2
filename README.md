@@ -10,7 +10,7 @@
 
 - Run the [`TestRunner`](JFreeChart/src/org/jfree/data/test/TestRunner.java) to execute the test cases
 
-- The demonstration video is _TBA_.
+- The demonstration video is [here](https://youtu.be/gPVR7DnBnlg).
 
 ## Contributors
 
