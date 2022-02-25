@@ -38,7 +38,7 @@ For this class, an `exampleRange` of -10 to 10 is used by all the test cases. Ad
 | BLB          | -10.00001                    |
 | LB           | -10                          |
 | ALB          | -9.99999                     |
-| NOM          | Any `double` between -9 to 9 |
+| NOM          | Any `double` between -9 to 9 or other standard value (depending on method)|
 | BUB          | 9.99999                      |
 | UB           | 10                           |
 | AUB          | 10.00001                     |
