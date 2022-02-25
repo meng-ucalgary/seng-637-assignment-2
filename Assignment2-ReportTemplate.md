@@ -35,7 +35,9 @@ The below five methods are to be explored
 
 - `shift(Range base, double delta, boolean allowZeroCrossing)`
 - `isNaNRange()`
-- `expandToInclude(Range range, double value)`
+- `expandToInclude(Range range, double value)`  
+   For expandToInclude the partitions were as described below. This tested the cases of the range being expanded by small amounts/below both bounds. This also tested the cases where the 'expand to value' was inside of the range, and therefor the range should remain the same (not shrink). The range was also tested by expanding to the +/- max values for double
+
 - `combineIgnoringNaN(Range range1, Range range2)`
 - `intersects(double b0, double b1)`
 
@@ -51,14 +53,15 @@ NOM - NOM
 UB - 1 AUB
 1 BLB - 1 AUB
 
-[insert the boundary graph]
+![image](partitions.PNG)
 
 #### `DataUtilities`
 
 The below five methods are to be explored. `jMock` is used to mock the interfaces `Values2D` and `KeyedValues` which are used as parameters to these methods
 
 - `calculateColumnTotal(Values2D data, int column)`
-- `calculateColumnTotal(Values2D data, int column, int[] validRows)`
+- `calculateColumnTotal(Values2D data, int column, int[] validRows)`  
+   For calculateColumnTotal with the validRows parameter, a 3x3 shape of Values2D was used for testing. Each column was tested will all of the rows being valid. Then each column was then tested with each row being valid, one at a time. Several combinations were also tried with two rows being valid. Some tests were also performed using the max values for row/column sizes (Integer.MAX_VALUE). Tests were also done using max values in Values2D. The max value chosen was 2^53 as this is the largest double value that maintains integer precision. 
 - `calculateRowTotal(Values2D data, int row)`
 - `calculateRowTotal(Values2D data, int row, int[] validCols)`
 - `getCumulativePercentages(KeyedValues data)`
