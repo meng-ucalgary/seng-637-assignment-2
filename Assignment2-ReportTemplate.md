@@ -104,20 +104,20 @@ The below five methods are to be explored.
 
 ### 3. `Range.intersects(double, double)`
 
-| Test case                     | Input partitions       |
-| ----------------------------- | ---------------------- |
-| `intersectWithInputBLBAndLB`  | (-15,-10)              |
-| `intersectWithInputBLBAndALB` | (-15,-8)               |
-| `intersectsWithInput0And0`    | (0,0)                  |
-| `intersectWithInputBLBAndAUB` | (-15,15)               |
-| `intersectWithInputBLBAndMAX` | (-15,Double.MAX_VALUE) |
-| `intersectWithInputBUBAndUB`  | (9,10)                 |
-| `intersectWithInputUBAndAUB`  | (10,15)                |
-| `intersectWithInputLBAndALB`  | (-10,7)                |
-| `intersectWithInputLBAndUB`   | (-10,-10)              |
-| `intersectWithInputMINAndAUB` | (Double.MIN_VALUE,15)  |
-| `intersectWithInputNaNAnd1`   | (Double.NaN,1)         |
-| `intersectWithInputNOMAndNOM` | (-1,1)                 |
+| Test case                      | Input partitions               |
+| ------------------------------ | ------------------------------ |
+| `intersectsWithInputBLBAndLB`  | (-10.00001, -10))              |
+| `intersectsWithInputBLBAndALB` | (-10.00001, -9.99999))         |
+| `intersectsWithInputBLBAndAUB` | (-10.00001, 10.00001))         |
+| `intersectsWithInputLBAndALB`  | (-10, -9.99999))               |
+| `intersectsWithInputLBAndUB`   | (-10, 10))                     |
+| `intersectsWithInputNOMAndNOM` | (-1, 1))                       |
+| `intersectsWithInputBUBAndUB`  | (9.99999, 10))                 |
+| `intersectsWithInputUBAndAUB`  | (10, 10.00001))                |
+| `intersectsWithInputMINAndAUB` | (Double.MIN_VALUE, 10.00001))  |
+| `intersectsWithInputBLBAndMAX` | (-10.00001, Double.MAX_VALUE)) |
+| `intersectsWithInput0And0`     | (0, 0))                        |
+| `intersectsWithInputNaNAnd1`   | (Double.NaN, 1))               |
 
 ### 4. `Range.expandToInclude(Range, double)`
 
