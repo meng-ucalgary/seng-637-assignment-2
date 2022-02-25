@@ -18,7 +18,7 @@ public class RangeTest {
         this.originRange = new Range(0.0, 0.0);
     }
 
-    // test cases for isNaNRange ----------------------------------------------
+    // test cases for isNaNRange() --------------------------------------------
     @Test
     public void isNaNRangeWithBothBoundNOM() {
         assertEquals("Testing the range that has different NOM bounds", false, this.exampleRange.isNaNRange());
@@ -61,7 +61,7 @@ public class RangeTest {
     }
     // ------------------------------------------------------------------------
 
-    // test cases for shift ---------------------------------------------------
+    // test cases for shift(Range, double, boolean) ---------------------------
     @Test
     public void shiftRightToMaxValueAtZeroRangeAllowZeroCrossing() {
         Range rangeShift = Range.shift(originRange, Double.MAX_VALUE, true);
@@ -141,69 +141,69 @@ public class RangeTest {
     }
     // ------------------------------------------------------------------------
 
-    // test cases for intersects ----------------------------------------------
+    // test cases for intersects(double, double) ------------------------------
     @Test
-    public void intersecstWithInputBLBAndLB() {
+    public void intersectsWithInputBLBAndLB() {
         assertFalse(this.exampleRange.intersects(-15, -10));
     }
 
     @Test
-    public void intersecstWithInputBLBAndALB() {
+    public void intersectsWithInputBLBAndALB() {
         assertTrue(this.exampleRange.intersects(-15, -8));
     }
 
     @Test
-    public void intersecstWithInputBLBAndAUB() {
+    public void intersectsWithInputBLBAndAUB() {
         assertTrue(this.exampleRange.intersects(-15, 15));
     }
 
     @Test
-    public void intersecstWithInputLBAndALB() {
+    public void intersectsWithInputLBAndALB() {
         assertTrue(this.exampleRange.intersects(-10, 7));
     }
 
     @Test
-    public void intersecstWithInputLBAndUB() {
+    public void intersectsWithInputLBAndUB() {
         assertTrue(this.exampleRange.intersects(-10, 10));
     }
 
     @Test
-    public void intersecstWithInputNOMAndNOM() {
+    public void intersectsWithInputNOMAndNOM() {
         assertTrue(this.exampleRange.intersects(-1, 1));
     }
 
     @Test
-    public void intersecstWithInputBUBAndUB() {
+    public void intersectsWithInputBUBAndUB() {
         assertTrue(this.exampleRange.intersects(9, 10));
     }
 
     @Test
-    public void intersecstWithInputUBAndAUB() {
+    public void intersectsWithInputUBAndAUB() {
         assertTrue(this.exampleRange.intersects(10, 15));
     }
 
     @Test
-    public void intersecstWithInputMINAndAUB() {
+    public void intersectsWithInputMINAndAUB() {
         assertTrue(this.exampleRange.intersects(Double.MIN_VALUE, 15));
     }
 
     @Test
-    public void intersecstWithInputBLBAndMAX() {
+    public void intersectsWithInputBLBAndMAX() {
         assertTrue(this.exampleRange.intersects(-15, Double.MAX_VALUE));
     }
 
     @Test
-    public void intersecstWithInput0And0() {
+    public void intersectsWithInput0And0() {
         assertTrue(this.exampleRange.intersects(0, 0));
     }
 
     @Test
-    public void intersecstWithInputNaNAnd1() {
+    public void intersectsWithInputNaNAnd1() {
         assertTrue(this.exampleRange.intersects(Double.NaN, 1));
     }
     // ------------------------------------------------------------------------
 
-    // test cases for expandToInclude -----------------------------------------
+    // test cases for expandToInclude(Range, double) --------------------------
     @Test
     public void expandToIncludeWithInputBLB() {
         assertEquals("Testing epanding range to include value BLB", new Range(-11, 10),
@@ -253,7 +253,7 @@ public class RangeTest {
     }
     // ------------------------------------------------------------------------
 
-    // test cases for combineIgnoringNaN --------------------------------------
+    // test cases for combineIgnoringNaN(Range, Range) ------------------------
     @Test
     public void combineIgnoringNaNWithSmallerRange() {
         Range r2 = new Range(-5, 6);

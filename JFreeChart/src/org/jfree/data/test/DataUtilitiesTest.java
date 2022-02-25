@@ -1054,7 +1054,6 @@ public class DataUtilitiesTest {
         });
 
         KeyedValues result = DataUtilities.getCumulativePercentages(kv);
-
         assertEquals("The cumulative percentage of 0 in data should be the result of 0.0/0.0", 0.0 / 0.0,
                 result.getValue(0));
     }
