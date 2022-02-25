@@ -202,12 +202,12 @@ public class RangeTest {
         assertTrue(this.exampleRange.intersects(Double.NaN, 1));
     }
     // ------------------------------------------------------------------------
-
-    // test cases for expandToInclude(Range, double) --------------------------
+    
+    // test cases for expandToInclude -----------------------------------------
     @Test
     public void expandToIncludeWithInputBLB() {
-        assertEquals("Testing epanding range to include value BLB", new Range(-11, 10),
-                Range.expandToInclude(this.exampleRange, -11));
+        assertEquals("Testing epanding range to include value BLB", new Range(-10.00001, 10),
+                Range.expandToInclude(this.exampleRange, -10.00001));
     }
 
     @Test
@@ -219,13 +219,13 @@ public class RangeTest {
     @Test
     public void expandToIncludeWithInputALB() {
         assertEquals("Testing epanding range to include value ALB (range shouldn't change)", new Range(-10, 10),
-                Range.expandToInclude(this.exampleRange, -9));
+                Range.expandToInclude(this.exampleRange, -9.99999));
     }
 
     @Test
     public void expandToIncludeWithInputBUB() {
         assertEquals("Testing epanding range to include value BUB (range shouldn't change)", new Range(-10, 10),
-                Range.expandToInclude(this.exampleRange, 9));
+                Range.expandToInclude(this.exampleRange, 9.99999));
     }
 
     @Test
@@ -236,8 +236,19 @@ public class RangeTest {
 
     @Test
     public void expandToIncludeWithInputAUB() {
-        assertEquals("Testing epanding range to include value AUB ", new Range(-10, 11),
-                Range.expandToInclude(this.exampleRange, 11));
+        assertEquals("Testing epanding range to include value AUB ", new Range(-10, 10.00001),
+                Range.expandToInclude(this.exampleRange, 10.00001));
+    }
+    @Test
+    public void expandToIncludeWithInputPositive() {
+        assertEquals("Testing epanding range to include value at LB (range shouldn't change)", new Range(-10, 25),
+                Range.expandToInclude(this.exampleRange, 25));
+    }
+
+    @Test
+    public void expandToIncludeWithInputNegative() {
+        assertEquals("Testing epanding range to include value at LB (range shouldn't change)", new Range(-25, 10),
+                Range.expandToInclude(this.exampleRange, -25));
     }
 
     @Test
