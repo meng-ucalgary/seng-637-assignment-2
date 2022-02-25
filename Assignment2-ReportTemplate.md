@@ -77,168 +77,168 @@ The below five methods are to be explored.
 
 ### 1. `Range.isNaNRange()`
 
-| Test case                        | Input partitions         |
-| -------------------------------- | ------------------------ |
-| `isNaNRangeWithBothBoundNOM`     | (-10, 10)                |
-| `isNaNRangeWithBothBoundSameNOM` | (10, 10)                 |
-| `isNaNRangeWithLowerBoundMin`    | (-Double.MAX_VALUE, 10)  |
-| `isNaNRangeWithUpperBoundMax`    | (10, Double.MAX_VALUE)   |
-| `isNaNRangeWithLowerBoundNaN`    | (Double.NaN, 10)         |
-| `isNaNRangeWithUpperBoundNaN`    | (-10, Double.NaN)        |
-| `isNaNRangeWithBothBoundNaN`     | (Double.NaN, Double.NaN) |
+| Test case                        | Input partitions         | Status |
+| -------------------------------- | ------------------------ | ------ |
+| `isNaNRangeWithBothBoundNOM`     | (-10, 10)                | Pass   |
+| `isNaNRangeWithBothBoundSameNOM` | (10, 10)                 | Pass   |
+| `isNaNRangeWithLowerBoundMin`    | (-Double.MAX_VALUE, 10)  | Pass   |
+| `isNaNRangeWithUpperBoundMax`    | (10, Double.MAX_VALUE)   | Pass   |
+| `isNaNRangeWithLowerBoundNaN`    | (Double.NaN, 10)         | Pass   |
+| `isNaNRangeWithUpperBoundNaN`    | (-10, Double.NaN)        | Pass   |
+| `isNaNRangeWithBothBoundNaN`     | (Double.NaN, Double.NaN) | Pass   |
 
 ### 2. `Range.shift(Range, double, boolean)`
 
-| Test case                                                   | Input partitions                   |
-| ----------------------------------------------------------- | ---------------------------------- |
-| `shiftRightToMaxValueAtZeroRangeAllowZeroCrossing`          | (0.0, 0.0), Double.MAX_VALUE, true |
-| `shiftRightAtZeroRangeDisallowZeroCrossing`                 | (0.0, 0.0), 4.0, false             |
-| `shiftLeftToMinValueAtZeroRangeAllowZeroCrossing`           | (0.0, 0.0), Double.MIN_VALUE, true |
-| `shiftLeftAtZeroRangeDisallowZeroCrossing`                  | (0.0, 0.0), -5.0, false            |
-| `shiftRightNegativeRangeAllowZeroCrossingForLbAndUb`        | (-10.0, -5.0), 15.0, true          |
-| `shiftRightNegativeRangeDisallowZeroCrossingForLbAndUb`     | (-10.0, -5.0), 18.0, false         |
-| `shiftLeftPostiveRangeAllowZeroCrossingForLbAndUb`          | (5.0, 7.0), -10.0, true            |
-| `shiftLeftPostiveRangeDisallowZeroCrossingForLbAndUb`       | (5.0, 7.0), -9.0, false            |
-| `shiftRightNegativeLbAndPostiveUbRangeDisallowZeroCrossing` | (-3.0, 7.0), 6.0, false            |
-| `shiftLeftNegativeLbAndPostiveUbRangeDisallowZeroCrossing`  | (-3.0, 7.0), -8.0, false           |
+| Test case                                                   | Input partitions                   | Status |
+| ----------------------------------------------------------- | ---------------------------------- | ------ |
+| `shiftRightToMaxValueAtZeroRangeAllowZeroCrossing`          | (0.0, 0.0), Double.MAX_VALUE, true | Pass   |
+| `shiftRightAtZeroRangeDisallowZeroCrossing`                 | (0.0, 0.0), 4.0, false             | Pass   |
+| `shiftLeftToMinValueAtZeroRangeAllowZeroCrossing`           | (0.0, 0.0), Double.MIN_VALUE, true | Pass   |
+| `shiftLeftAtZeroRangeDisallowZeroCrossing`                  | (0.0, 0.0), -5.0, false            | Pass   |
+| `shiftRightNegativeRangeAllowZeroCrossingForLbAndUb`        | (-10.0, -5.0), 15.0, true          | Pass   |
+| `shiftRightNegativeRangeDisallowZeroCrossingForLbAndUb`     | (-10.0, -5.0), 18.0, false         | Pass   |
+| `shiftLeftPostiveRangeAllowZeroCrossingForLbAndUb`          | (5.0, 7.0), -10.0, true            | Pass   |
+| `shiftLeftPostiveRangeDisallowZeroCrossingForLbAndUb`       | (5.0, 7.0), -9.0, false            | Pass   |
+| `shiftRightNegativeLbAndPostiveUbRangeDisallowZeroCrossing` | (-3.0, 7.0), 6.0, false            | Pass   |
+| `shiftLeftNegativeLbAndPostiveUbRangeDisallowZeroCrossing`  | (-3.0, 7.0), -8.0, false           | Pass   |
 
 ### 3. `Range.intersects(double, double)`
 
-| Test case                      | Input partitions               |
-| ------------------------------ | ------------------------------ |
-| `intersectsWithInputBLBAndLB`  | (-10.00001, -10))              |
-| `intersectsWithInputBLBAndALB` | (-10.00001, -9.99999))         |
-| `intersectsWithInputBLBAndAUB` | (-10.00001, 10.00001))         |
-| `intersectsWithInputLBAndALB`  | (-10, -9.99999))               |
-| `intersectsWithInputLBAndUB`   | (-10, 10))                     |
-| `intersectsWithInputNOMAndNOM` | (-1, 1))                       |
-| `intersectsWithInputBUBAndUB`  | (9.99999, 10))                 |
-| `intersectsWithInputUBAndAUB`  | (10, 10.00001))                |
-| `intersectsWithInputMINAndAUB` | (Double.MIN_VALUE, 10.00001))  |
-| `intersectsWithInputBLBAndMAX` | (-10.00001, Double.MAX_VALUE)) |
-| `intersectsWithInput0And0`     | (0, 0))                        |
-| `intersectsWithInputNaNAnd1`   | (Double.NaN, 1))               |
+| Test case                      | Input partitions               | Status |
+| ------------------------------ | ------------------------------ | ------ |
+| `intersectsWithInputBLBAndLB`  | (-10.00001, -10))              | Pass   |
+| `intersectsWithInputBLBAndALB` | (-10.00001, -9.99999))         | Pass   |
+| `intersectsWithInputBLBAndAUB` | (-10.00001, 10.00001))         | Pass   |
+| `intersectsWithInputLBAndALB`  | (-10, -9.99999))               | Pass   |
+| `intersectsWithInputLBAndUB`   | (-10, 10))                     | Pass   |
+| `intersectsWithInputNOMAndNOM` | (-1, 1))                       | Pass   |
+| `intersectsWithInputBUBAndUB`  | (9.99999, 10))                 | Pass   |
+| `intersectsWithInputUBAndAUB`  | (10, 10.00001))                | Pass   |
+| `intersectsWithInputMINAndAUB` | (Double.MIN_VALUE, 10.00001))  | Pass   |
+| `intersectsWithInputBLBAndMAX` | (-10.00001, Double.MAX_VALUE)) | Pass   |
+| `intersectsWithInput0And0`     | (0, 0))                        | Pass   |
+| `intersectsWithInputNaNAnd1`   | (Double.NaN, 1))               | FAIL   |
 
 ### 4. `Range.expandToInclude(Range, double)`
 
-| Test case                                   | Input partitions             |
-| ------------------------------------------- | ---------------------------- |
-| `expandToIncludeWithInputBLB`               | (-10, 10), -10.00001         |
-| `expandToIncludeWithInputLB`                | (-10, 10), -10               |
-| `expandToIncludeWithInputALB`               | (-10, 10), -9.99999          |
-| `expandToIncludeWithInputBUB`               | (-10, 10), 9.99999           |
-| `expandToIncludeWithInputUB`                | (-10, 10), 10                |
-| `expandToIncludeWithInputAUB`               | (-10, 10), 10.00001          |
-| `expandToIncludeWithInputPositive`          | (-10, 10), 25                |
-| `expandToIncludeWithInputNegative`          | (-10, 10), -25               |
-| `expandToIncludeWithInputDoubleMax`         | (-10, 10), Double.MAX_VALUE  |
-| `expandToIncludeWithInputNegativeDoubleMax` | (-10, 10), -Double.MAX_VALUE |
+| Test case                                   | Input partitions             | Status |
+| ------------------------------------------- | ---------------------------- | ------ |
+| `expandToIncludeWithInputBLB`               | (-10, 10), -10.00001         | Pass   |
+| `expandToIncludeWithInputLB`                | (-10, 10), -10               | Pass   |
+| `expandToIncludeWithInputALB`               | (-10, 10), -9.99999          | Pass   |
+| `expandToIncludeWithInputBUB`               | (-10, 10), 9.99999           | Pass   |
+| `expandToIncludeWithInputUB`                | (-10, 10), 10                | Pass   |
+| `expandToIncludeWithInputAUB`               | (-10, 10), 10.00001          | Pass   |
+| `expandToIncludeWithInputPositive`          | (-10, 10), 25                | Pass   |
+| `expandToIncludeWithInputNegative`          | (-10, 10), -25               | Pass   |
+| `expandToIncludeWithInputDoubleMax`         | (-10, 10), Double.MAX_VALUE  | Pass   |
+| `expandToIncludeWithInputNegativeDoubleMax` | (-10, 10), -Double.MAX_VALUE | Pass   |
 
 ### 5. `Range.combineIgnoringNaN(Range, Range)`
 
-| Test case                                 | Input partitions                    |
-| ----------------------------------------- | ----------------------------------- |
-| `combineIgnoringNaNWithSmallerRange`      | (-10, 10), (-5, 6)                  |
-| `combineIgnoringNaNWithDisjointRange`     | (-10, 10), (20, 50)                 |
-| `combineIgnoringNaNWithNull`              | (-10, 10), null                     |
-| `combineIgnoringNaNWithLowerBoundMinimum` | (-10, 10), (-Double.MAX_VALUE, -20) |
-| `combineIgnoringNaNWithLowerBoundNaN`     | (-10, 10), (Double.NaN, -20)        |
-| `combineIgnoringNaNWithLB`                | (-10, 10), (-10, 20)                |
-| `combineIgnoringNaNWithALB`               | (-10, 10), (-9.99999, 20)           |
-| `combineIgnoringNaNWithBLB`               | (-10, 10), (-10.00001, 20)          |
-| `combineIgnoringNaNWithUpperBoundMaximum` | (-10, 10), (20, Double.MAX_VALUE)   |
-| `combineIgnoringNaNWithUpperBoundNaN`     | (-10, 10), (20, Double.NaN)         |
-| `combineIgnoringNaNWithUB`                | (-10, 10), (-20, 10)                |
-| `combineIgnoringNaNWithAUB`               | (-10, 10), (-20, 10.00001)          |
-| `combineIgnoringNaNWithBUB`               | (-10, 10), (-20, 9.99999)           |
-| `combineIgnoringNaNWithBothBoundNaN`      | (-10, 10), (Double.NaN, Double.NaN) |
-| `combineIgnoringNaNWithZeroRange`         | (-10, 10), (0, 0)                   |
-| `combineIgnoringNaNWithItself`            | (-10, 10), (-10, 10)                |
+| Test case                                 | Input partitions                    | Status |
+| ----------------------------------------- | ----------------------------------- | ------ |
+| `combineIgnoringNaNWithSmallerRange`      | (-10, 10), (-5, 6)                  | Pass   |
+| `combineIgnoringNaNWithDisjointRange`     | (-10, 10), (20, 50)                 | Pass   |
+| `combineIgnoringNaNWithNull`              | (-10, 10), null                     | Pass   |
+| `combineIgnoringNaNWithLowerBoundMinimum` | (-10, 10), (-Double.MAX_VALUE, -20) | Pass   |
+| `combineIgnoringNaNWithLowerBoundNaN`     | (-10, 10), (Double.NaN, -20)        | Pass   |
+| `combineIgnoringNaNWithLB`                | (-10, 10), (-10, 20)                | Pass   |
+| `combineIgnoringNaNWithALB`               | (-10, 10), (-9.99999, 20)           | Pass   |
+| `combineIgnoringNaNWithBLB`               | (-10, 10), (-10.00001, 20)          | Pass   |
+| `combineIgnoringNaNWithUpperBoundMaximum` | (-10, 10), (20, Double.MAX_VALUE)   | Pass   |
+| `combineIgnoringNaNWithUpperBoundNaN`     | (-10, 10), (20, Double.NaN)         | Pass   |
+| `combineIgnoringNaNWithUB`                | (-10, 10), (-20, 10)                | Pass   |
+| `combineIgnoringNaNWithAUB`               | (-10, 10), (-20, 10.00001)          | Pass   |
+| `combineIgnoringNaNWithBUB`               | (-10, 10), (-20, 9.99999)           | Pass   |
+| `combineIgnoringNaNWithBothBoundNaN`      | (-10, 10), (Double.NaN, Double.NaN) | Pass   |
+| `combineIgnoringNaNWithZeroRange`         | (-10, 10), (0, 0)                   | Pass   |
+| `combineIgnoringNaNWithItself`            | (-10, 10), (-10, 10)                | Pass   |
 
 ### 6. `DataUtilities.calculateRowTotal(Values2D, int)`
 
-| Test case                                  | Input partitions                  |
-| ------------------------------------------ | --------------------------------- |
-| `calculateRowTotalFirstRow`                | [7.5, 2.5, 5.0], 0                |
-| `calculateRowTotalLastRow`                 | [7.5, 2.5, 5.0], 2                |
-| `calculateRowTotalMiddleRow`               | [7.5, 2.5, 5.0], 1                |
-| `calculateRowTotalWithMaxValueAndFirstRow` | [Double.MAX_VALUE, 2.5, -2.5], 0  |
-| `calculateRowTotalWithMaxValueRow()`       | [7.5, 2.5, 5.0], Double.MAX_VALUE |
-| `calculateRowTotalWithMinValueAndFirstRow` | [Double.MIN_VALUE, 2.5, -2.5], 0  |
-| `calculateRowTotalWithMinValueRow`         | [7.5, 2.5, 5.0], Double.MIN_VALUE |
-| `calculateRowTotalWithSumOf0AndFirstRow`   | [7.5, 2.5, -10], 0                |
+| Test case                                  | Input partitions                  | Status |
+| ------------------------------------------ | --------------------------------- | ------ |
+| `calculateRowTotalFirstRow`                | [7.5, 2.5, 5.0], 0                | Pass   |
+| `calculateRowTotalLastRow`                 | [7.5, 2.5, 5.0], 2                | Pass   |
+| `calculateRowTotalMiddleRow`               | [7.5, 2.5, 5.0], 1                | Pass   |
+| `calculateRowTotalWithMaxValueAndFirstRow` | [Double.MAX_VALUE, 2.5, -2.5], 0  | Pass   |
+| `calculateRowTotalWithMaxValueRow()`       | [7.5, 2.5, 5.0], Double.MAX_VALUE | Pass   |
+| `calculateRowTotalWithMinValueAndFirstRow` | [Double.MIN_VALUE, 2.5, -2.5], 0  | Pass   |
+| `calculateRowTotalWithMinValueRow`         | [7.5, 2.5, 5.0], Double.MIN_VALUE | Pass   |
+| `calculateRowTotalWithSumOf0AndFirstRow`   | [7.5, 2.5, -10], 0                | Pass   |
 
 ### 7. `DataUtilities.calculateRowTotal(Values2D, int, int[])`
 
-| Test case                                                   | Input partitions                                            |
-| ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `calculateRowTotalFirstRowValidAllColumns`                  | [7.16, 3.14, 5.23], 0, [0, 1, 2]                            |
-| `calculateRowTotalMiddleRowValidAllColumns`                 | [7.16, 3.14, 5.23], 1, [0, 1, 2]                            |
-| `calculateRowTotalLastRowValidAllColumns`                   | [7.16, 3.14, 5.23], 2, [0, 1, 2]                            |
-| `calculateRowTotalFirstRowValidFirstColumn`                 | [7.16, 3.14, 5.23], 0, [0]                                  |
-| `calculateRowTotalFirstRowValidMiddleColumn`                | [7.16, 3.14, 5.23], 0, [1]                                  |
-| `calculateRowTotalFirstRowValidLastColumn`                  | [7.16, 3.14, 5.23], 0, [2]                                  |
-| `calculateRowTotalMiddleRowValidFirstColumn`                | [7.16, 3.14, 5.23], 1, [0]                                  |
-| `calculateRowTotalMiddleRowValidMiddleColumn`               | [7.16, 3.14, 5.23], 1, [1]                                  |
-| `calculateRowTotalMiddleRowValidLastColumn`                 | [7.16, 3.14, 5.23], 1, [2]                                  |
-| `calculateRowTotalLastRowValidFirstColumn`                  | [7.16, 3.14, 5.23], 2, [0]                                  |
-| `calculateRowTotalLastRowValidMiddleColumn`                 | [7.16, 3.14, 5.23], 2, [1]                                  |
-| `calculateRowTotalLastRowValidLastolumn`                    | [7.16, 3.14, 5.23], 2, [2]                                  |
-| `calculateRowTotalFirstRowValidFirstAndLastColumn`          | [7.16, 3.14, 5.23], 0, [0, 2]                               |
-| `calculateRowTotalLastRowValidMiddleAndLastColumn`          | [7.16, 3.14, 5.23], 2, [1, 2]                               |
-| `calculateRowTotalMiddleRowInvalidColumnAUB`                | [7.16, 3.14, 5.23], 1, [3]                                  |
-| `calculateRowTotalLastRowInvalidColumnAUBAndOneValidColumn` | [7.16, 3.14, 5.23], 2, [2, 3]                               |
-| `calculateRowTotalFirstRowInvalidColumnBLB`                 | [], 0, [-1]                                                 |
-| `calculateRowTotalMaxRowsMaxColumn`                         | [7.16, 3.14], Integer.MAX_VALUE [0, Integer.MAX_VALUE]      |
-| `calculateRowTotalBelowMaxRowsBelowMaxColumn`               | [7.16, 3.14], Integer.MAX_VALUE-1, [0, Integer.MAX_VALUE-1] |
-| `calculateRowTotalWithMaxValue`                             | [2^53-1, 1], 0, [0, 1]                                      |
+| Test case                                                   | Input partitions                                            | Status |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ------ |
+| `calculateRowTotalFirstRowValidAllColumns`                  | [7.16, 3.14, 5.23], 0, [0, 1, 2]                            | Pass   |
+| `calculateRowTotalMiddleRowValidAllColumns`                 | [7.16, 3.14, 5.23], 1, [0, 1, 2]                            | Pass   |
+| `calculateRowTotalLastRowValidAllColumns`                   | [7.16, 3.14, 5.23], 2, [0, 1, 2]                            | Pass   |
+| `calculateRowTotalFirstRowValidFirstColumn`                 | [7.16, 3.14, 5.23], 0, [0]                                  | Pass   |
+| `calculateRowTotalFirstRowValidMiddleColumn`                | [7.16, 3.14, 5.23], 0, [1]                                  | Pass   |
+| `calculateRowTotalFirstRowValidLastColumn`                  | [7.16, 3.14, 5.23], 0, [2]                                  | Pass   |
+| `calculateRowTotalMiddleRowValidFirstColumn`                | [7.16, 3.14, 5.23], 1, [0]                                  | Pass   |
+| `calculateRowTotalMiddleRowValidMiddleColumn`               | [7.16, 3.14, 5.23], 1, [1]                                  | Pass   |
+| `calculateRowTotalMiddleRowValidLastColumn`                 | [7.16, 3.14, 5.23], 1, [2]                                  | Pass   |
+| `calculateRowTotalLastRowValidFirstColumn`                  | [7.16, 3.14, 5.23], 2, [0]                                  | Pass   |
+| `calculateRowTotalLastRowValidMiddleColumn`                 | [7.16, 3.14, 5.23], 2, [1]                                  | Pass   |
+| `calculateRowTotalLastRowValidLastolumn`                    | [7.16, 3.14, 5.23], 2, [2]                                  | Pass   |
+| `calculateRowTotalFirstRowValidFirstAndLastColumn`          | [7.16, 3.14, 5.23], 0, [0, 2]                               | Pass   |
+| `calculateRowTotalLastRowValidMiddleAndLastColumn`          | [7.16, 3.14, 5.23], 2, [1, 2]                               | Pass   |
+| `calculateRowTotalMiddleRowInvalidColumnAUB`                | [7.16, 3.14, 5.23], 1, [3]                                  | Pass   |
+| `calculateRowTotalLastRowInvalidColumnAUBAndOneValidColumn` | [7.16, 3.14, 5.23], 2, [2, 3]                               | Pass   |
+| `calculateRowTotalFirstRowInvalidColumnBLB`                 | [], 0, [-1]                                                 | FAIL   |
+| `calculateRowTotalMaxRowsMaxColumn`                         | [7.16, 3.14], Integer.MAX_VALUE [0, Integer.MAX_VALUE]      | FAIL   |
+| `calculateRowTotalBelowMaxRowsBelowMaxColumn`               | [7.16, 3.14], Integer.MAX_VALUE-1, [0, Integer.MAX_VALUE-1] | FAIL   |
+| `calculateRowTotalWithMaxValue`                             | [2^53-1, 1], 0, [0, 1]                                      | Pass   |
 
 ### 8. `DataUtilities.calculateColumnTotal(Values2D, int)`
 
-| Test case                                        | Input partitions                   |
-| ------------------------------------------------ | ---------------------------------- |
-| `calculateColumnTotalAllRowsFirstColumn`         | [7.5, 2.5, 5.0], 0                 |
-| `calculateColumnTotalAllRowsMiddleColumn`        | [7.5, 2.5, 5.0], 1                 |
-| `calculateColumnTotalAllRowsLastColumn`          | [7.5, 2.5, 5.0], 2                 |
-| `calculateColumnTotalWithMaxValueAndFirstColumn` | [Double.MAX_VALUE, 2.5, -2.5], 0   |
-| `calculateColumnTotalWithMinValueAndFirstColumn` | [Double.MIN_VALUE, 2.5, -2.5], 0   |
-| `calculateColumnTotalWithMaxValueColumn`         | [7.5, 2.5, 5.0], Integer.MAX_VALUE |
-| `calculateColumnTotalWithMinValueColumn`         | [7.5, 2.5, 5.0], Integer.MIN_VALUE |
-| `calculateColumnTotalWithSumOf0AndFirstColumn`   | [7.5, 2.5, -10], 0                 |
+| Test case                                        | Input partitions                   | Status |
+| ------------------------------------------------ | ---------------------------------- | ------ |
+| `calculateColumnTotalAllRowsFirstColumn`         | [7.5, 2.5, 5.0], 0                 | Pass   |
+| `calculateColumnTotalAllRowsMiddleColumn`        | [7.5, 2.5, 5.0], 1                 | Pass   |
+| `calculateColumnTotalAllRowsLastColumn`          | [7.5, 2.5, 5.0], 2                 | Pass   |
+| `calculateColumnTotalWithMaxValueAndFirstColumn` | [Double.MAX_VALUE, 2.5, -2.5], 0   | Pass   |
+| `calculateColumnTotalWithMinValueAndFirstColumn` | [Double.MIN_VALUE, 2.5, -2.5], 0   | Pass   |
+| `calculateColumnTotalWithMaxValueColumn`         | [7.5, 2.5, 5.0], Integer.MAX_VALUE | Pass   |
+| `calculateColumnTotalWithMinValueColumn`         | [7.5, 2.5, 5.0], Integer.MIN_VALUE | Pass   |
+| `calculateColumnTotalWithSumOf0AndFirstColumn`   | [7.5, 2.5, -10], 0                 | Pass   |
 
 ### 9. `DataUtilities.calculateColumnTotal(Values2D, int, int[])`
 
-| Test case                                                   | Input partitions                                        |
-| ----------------------------------------------------------- | ------------------------------------------------------- |
-| `calculateColumnTotalAllRowsValidFirstColumn`               | [7.5, 2.5, 5.0], 0 , [0, 1, 2]                          |
-| `calculateColumnTotalAllRowsValidMiddleColumn`              | [7.5, 2.5, 5.0], 1 , [0, 1, 2]                          |
-| `calculateColumnTotalAllRowsValidLastColumn`                | [7.5, 2.5, 5.0], 2 , [0, 1, 2]                          |
-| `calculateColumnTotalFirstRowValidFirstColumn`              | [7.5, 2.5, 5.0], 0 , [0]                                |
-| `calculateColumnTotalMiddleRowValidFirstColumn`             | [7.5, 2.5, 5.0], 0 , [1]                                |
-| `calculateColumnTotalLastRowValidFirstColumn`               | [7.5, 2.5, 5.0], 0 , [2]                                |
-| `calculateColumnTotalFirstRowValidMiddleColumn`             | [7.5, 2.5, 5.0], 1 , [0]                                |
-| `calculateColumnTotalMiddleRowValidMiddleColumn`            | [7.5, 2.5, 5.0], 1 , [1]                                |
-| `calculateColumnTotalLastRowValidMiddleColumn`              | [7.5, 2.5, 5.0], 1 , [2]                                |
-| `calculateColumnTotalFirstRowValidLastColumn`               | [7.5, 2.5, 5.0], 2 , [0]                                |
-| `calculateColumnTotalMiddleRowValidLastColumn`              | [7.5, 2.5, 5.0], 2 , [1]                                |
-| `calculateColumnTotalLastRowValidLastColumn`                | [7.5, 2.5, 5.0], 2 , [2]                                |
-| `calculateColumnTotalFirstAndLastRowValidFirstColumn`       | [7.5, 2.5, 5.0], 0 , [0, 2]                             |
-| `calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` | [7.5], 2 , [1, 3]                                       |
-| `calculateColumnTotalInvalidRowAUBMiddleColumn`             | [], 1 , [3]                                             |
-| `calculateColumnTotalInvalidRowBLBFirstColumn`              | [], 0 , [-1]                                            |
-| `calculateColumnTotalMaxRowsMaxColumn`                      | [2.5, 5], Integer.MAX_VALUE, [0, Integer.MAX_VALUE]     |
-| `calculateColumnTotalBelowMaxRowsBelowMaxColumn`            | [2.5, 5], Integer.MAX_VALUE-1, [0, Integer.MAX_VALUE-1] |
-| `calculateColumnTotalWithMaxValue`                          | [2^53-1, 1], 0, [0, 1]                                  |
+| Test case                                                   | Input partitions                                        | Status |
+| ----------------------------------------------------------- | ------------------------------------------------------- | ------ |
+| `calculateColumnTotalAllRowsValidFirstColumn`               | [7.5, 2.5, 5.0], 0 , [0, 1, 2]                          | Pass   |
+| `calculateColumnTotalAllRowsValidMiddleColumn`              | [7.5, 2.5, 5.0], 1 , [0, 1, 2]                          | Pass   |
+| `calculateColumnTotalAllRowsValidLastColumn`                | [7.5, 2.5, 5.0], 2 , [0, 1, 2]                          | Pass   |
+| `calculateColumnTotalFirstRowValidFirstColumn`              | [7.5, 2.5, 5.0], 0 , [0]                                | Pass   |
+| `calculateColumnTotalMiddleRowValidFirstColumn`             | [7.5, 2.5, 5.0], 0 , [1]                                | Pass   |
+| `calculateColumnTotalLastRowValidFirstColumn`               | [7.5, 2.5, 5.0], 0 , [2]                                | Pass   |
+| `calculateColumnTotalFirstRowValidMiddleColumn`             | [7.5, 2.5, 5.0], 1 , [0]                                | Pass   |
+| `calculateColumnTotalMiddleRowValidMiddleColumn`            | [7.5, 2.5, 5.0], 1 , [1]                                | Pass   |
+| `calculateColumnTotalLastRowValidMiddleColumn`              | [7.5, 2.5, 5.0], 1 , [2]                                | Pass   |
+| `calculateColumnTotalFirstRowValidLastColumn`               | [7.5, 2.5, 5.0], 2 , [0]                                | Pass   |
+| `calculateColumnTotalMiddleRowValidLastColumn`              | [7.5, 2.5, 5.0], 2 , [1]                                | Pass   |
+| `calculateColumnTotalLastRowValidLastColumn`                | [7.5, 2.5, 5.0], 2 , [2]                                | Pass   |
+| `calculateColumnTotalFirstAndLastRowValidFirstColumn`       | [7.5, 2.5, 5.0], 0 , [0, 2]                             | Pass   |
+| `calculateColumnTotalInvalidRowAUBAndOneValidRowLastColumn` | [7.5], 2 , [1, 3]                                       | Pass   |
+| `calculateColumnTotalInvalidRowAUBMiddleColumn`             | [], 1 , [3]                                             | Pass   |
+| `calculateColumnTotalInvalidRowBLBFirstColumn`              | [], 0 , [-1]                                            | FAIL   |
+| `calculateColumnTotalMaxRowsMaxColumn`                      | [2.5, 5], Integer.MAX_VALUE, [0, Integer.MAX_VALUE]     | FAIL   |
+| `calculateColumnTotalBelowMaxRowsBelowMaxColumn`            | [2.5, 5], Integer.MAX_VALUE-1, [0, Integer.MAX_VALUE-1] | FAIL   |
+| `calculateColumnTotalWithMaxValue`                          | [2^53-1, 1], 0, [0, 1]                                  | Pass   |
 
 ### 10. `DataUtilities.getCumulativePercentages(KeyedValues)`
 
-| Test method                                                     | Input partitions                                |
-| --------------------------------------------------------------- | ----------------------------------------------- |
-| `getCumulativePercentagesWithNoKeyedValues`                     | <>                                              |
-| `getCumulativePercentagesWithOneRowKeyedValue`                  | <0, 2>                                          |
-| `getCumulativePercentagesWithOneKeyedValueHavingZeroValue`      | <0, 0>                                          |
-| `test_getCumulativePercentages_oneKeyedValue_nullValue`         | <0, null>                                       |
-| `getCumulativePercentagesWithKeyedValuesHavingNullAndMixValues` | <0, -4.5>, <1, 2>, <2, null>, <3, 12.5>, <4, 0> |
+| Test method                                                     | Input partitions                                | Status |
+| --------------------------------------------------------------- | ----------------------------------------------- | ------ |
+| `getCumulativePercentagesWithNoKeyedValues`                     | <>                                              | Pass   |
+| `getCumulativePercentagesWithOneRowKeyedValue`                  | <0, 2>                                          | Pass   |
+| `getCumulativePercentagesWithOneKeyedValueHavingZeroValue`      | <0, 0>                                          | Pass   |
+| `test_getCumulativePercentages_oneKeyedValue_nullValue`         | <0, null>                                       | Pass   |
+| `getCumulativePercentagesWithKeyedValuesHavingNullAndMixValues` | <0, -4.5>, <1, 2>, <2, null>, <3, 12.5>, <4, 0> | Pass   |
 
 ## Division of team work
 
