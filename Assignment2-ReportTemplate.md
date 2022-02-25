@@ -15,11 +15,11 @@
 
 ## Introduction
 
-The objective of this assignment is to test five methods each of two classes - `org.jfree.data.Range` and `org.jfree.data.DataUtilities`.
+The objective of this assignment is to test five methods from two different classes - `org.jfree.data.Range` and `org.jfree.data.DataUtilities`.
 
-The `Range` class is best described as representing an immutable range of values. For the `Range` class, functions can be static methods or instance methods that performed on a range.
+The `Range` class is best described as representing an immutable range of values. For the `Range` class, functions can be static methods or instance methods that perform operations on a range.
 
-`DataUtilities`, on the other hand, provides a set of utility methods to be used in different data classes, with the exception of datasets. The methods from which `DataUtilities` class will be tested on involves parameter from two interfaces; `Values2D` and `KeyedValues`. `Values2D` is a general purpose interface for accessing a table of values whereas `KeyedValues` is an interface assisting the storage of an ordered list of key-value pairs.
+`DataUtilities`, on the other hand, provides a set of utility methods to be used in different data classes, with the exception of datasets. The methods in the `DataUtilities` class that will be tested involves parameters from two interfaces; `Values2D` and `KeyedValues`. `Values2D` is a general purpose interface for accessing a table of values whereas `KeyedValues` is an interface assisting the storage of an ordered list of key-value pairs.
 
 ## Video demo
 
@@ -221,7 +221,7 @@ The below five methods are to be explored.
 
 ## Division of team work
 
-Each of the four tester will complete at least 1 unit testing of the `Range` class and 1 unit testing using `jMock` from the `DataUtilities` class. Group peer review will be done after the individual testings to ensure that the quality of work abides to the scope of the test plan. Below table summarizes the distribution of development of test cases.
+Each of the four testers will complete unit tests for at least 1 method of the `Range` class and unit tests for at least 1 method of the `DataUtilities` class using `jMock`. Group peer review will be done after the individual testing to ensure that the quality of work abides to the scope of the test plan. Below table summarizes the distribution of development of test cases.
 
 | API method                                                 | Tester                   |
 | ---------------------------------------------------------- | ------------------------ |
