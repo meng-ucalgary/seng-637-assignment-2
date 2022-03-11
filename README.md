@@ -104,20 +104,20 @@ The below five methods are to be explored.
 
 ### 3. `Range.intersects(double, double)`
 
-| Test case                      | Input partitions               | Status |
-| ------------------------------ | ------------------------------ | ------ |
-| `intersectsWithInputBLBAndLB`  | (-10.00001, -10))              | Pass   |
-| `intersectsWithInputBLBAndALB` | (-10.00001, -9.99999))         | Pass   |
-| `intersectsWithInputBLBAndAUB` | (-10.00001, 10.00001))         | Pass   |
-| `intersectsWithInputLBAndALB`  | (-10, -9.99999))               | Pass   |
-| `intersectsWithInputLBAndUB`   | (-10, 10))                     | Pass   |
-| `intersectsWithInputNOMAndNOM` | (-1, 1))                       | Pass   |
-| `intersectsWithInputBUBAndUB`  | (9.99999, 10))                 | Pass   |
-| `intersectsWithInputUBAndAUB`  | (10, 10.00001))                | Pass   |
-| `intersectsWithInputMINAndAUB` | (Double.MIN_VALUE, 10.00001))  | Pass   |
-| `intersectsWithInputBLBAndMAX` | (-10.00001, Double.MAX_VALUE)) | Pass   |
-| `intersectsWithInput0And0`     | (0, 0))                        | Pass   |
-| `intersectsWithInputNaNAnd1`   | (Double.NaN, 1))               | FAIL   |
+| Test case                      | Input partitions              | Status |
+| ------------------------------ | ----------------------------- | ------ |
+| `intersectsWithInputBLBAndLB`  | (-10.00001, -10)              | Pass   |
+| `intersectsWithInputBLBAndALB` | (-10.00001, -9.99999)         | Pass   |
+| `intersectsWithInputBLBAndAUB` | (-10.00001, 10.00001)         | Pass   |
+| `intersectsWithInputLBAndALB`  | (-10, -9.99999)               | Pass   |
+| `intersectsWithInputLBAndUB`   | (-10, 10)                     | Pass   |
+| `intersectsWithInputNOMAndNOM` | (-1, 1)                       | Pass   |
+| `intersectsWithInputBUBAndUB`  | (9.99999, 10)                 | Pass   |
+| `intersectsWithInputUBAndAUB`  | (10, 10.00001)                | Pass   |
+| `intersectsWithInputMINAndAUB` | (Double.MIN_VALUE, 10.00001)  | Pass   |
+| `intersectsWithInputBLBAndMAX` | (-10.00001, Double.MAX_VALUE) | Pass   |
+| `intersectsWithInput0And0`     | (0, 0)                        | Pass   |
+| `intersectsWithInputNaNAnd1`   | (Double.NaN, 1)               | FAIL   |
 
 ### 4. `Range.expandToInclude(Range, double)`
 
